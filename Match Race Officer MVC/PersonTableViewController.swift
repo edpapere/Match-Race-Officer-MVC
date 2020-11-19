@@ -32,7 +32,8 @@ class PersonTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        navigationItem.rightBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -68,13 +69,33 @@ class PersonTableViewController: UITableViewController {
 
         let person = persons[indexPath.row]
         cell.textLabel?.text = "\(person.familyName) \(person.givenName)"
-        cell.detailTextLabel?.text = "\(person.ifPersonId) \(person.gender)"
+        cell.detailTextLabel?.text = "\(person.ifPersonId) \(person.gender) (\(person.personId))"
         // Configure the cell...
 
+        cell.showsReorderControl = true
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let person = persons[indexPath.row]
+        #if DEBUG
+        print(#line,#function,"\(person.familyName) \(person.givenName) \(indexPath)")
+        #endif
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedPerson = persons.remove(at: sourceIndexPath.row)
+        persons.insert(movedPerson, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
 
+    /*
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    */
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -83,17 +104,18 @@ class PersonTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            persons.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+  
 
     /*
     // Override to support rearranging the table view.
@@ -120,4 +142,9 @@ class PersonTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func shuffleButtonTapped(_ sender: UIBarButtonItem) {
+//        tableView.setEditing(!tableView.isEditing, animated: true)
+        persons.shuffle()
+        tableView.reloadData()
+    }
 }

@@ -65,7 +65,13 @@
                             <outlet property="delegate" destination="cjr-YB-rDY" id="Wk7-7l-Q78"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="clB-WZ-U5x"/>
+                    <navigationItem key="navigationItem" id="clB-WZ-U5x">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="dYK-a9-8gM">
+                            <connections>
+                                <action selector="shuffleButtonTapped:" destination="cjr-YB-rDY" id="gH6-G8-FR6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfe-y4-PHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,6 +79,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
