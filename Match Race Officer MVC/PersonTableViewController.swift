@@ -10,22 +10,22 @@ import UIKit
 class PersonTableViewController: UITableViewController {
     
     var persons: [Person] = [
-        Person(ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
-        Person(ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
-//        <Person FamilyName="Skarp" GivenName="Helena" IFPersonID="swehs2" NOC="SWE" PersonID="swehs2"/>
-//        <Person FamilyName="Tunnicliffe" GivenName="Anna" IFPersonID="usaat1" NOC="USA" PersonID="usaat1"/>
-//        <Person FamilyName="O'Bryan" GivenName="Molly" IFPersonID="usamo13" NOC="USA" PersonID="usamo13"/>
-//        <Person FamilyName="Capozzi" GivenName="Debbie" IFPersonID="usadc11" NOC="USA" PersonID="usadc11"/>
-//        <Person FamilyName="Wahlroos" GivenName="Chita" IFPersonID="fincw2" NOC="FIN" PersonID="fincw2"/>
-//        <Person FamilyName="Klemetz" GivenName="Maria" IFPersonID="finmk5" NOC="FIN" PersonID="finmk5"/>
-//        <Person FamilyName="Väresmaa" GivenName="Livia" IFPersonID="finlv1" NOC="FIN" PersonID="finlv1"/>
-//        <Person FamilyName="Leroy" GivenName="Claire" IFPersonID="fracl3" NOC="FRA" PersonID="fracl3"/>
-//        <Person FamilyName="Bertrand" GivenName="Elodie" IFPersonID="fraeb11" NOC="FRA" PersonID="fraeb11"/>
-//        <Person FamilyName="Riou" GivenName="Marie" IFPersonID="framr3" NOC="FRA" PersonID="framr3"/>
-        Person(ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
-        Person(ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female)
-//        <Person FamilyName="Gaponovich" GivenName="Natalia" IFPersonID="rusng1" NOC="RUS" PersonID="rusng1"/>
-//        <Person FamilyName="Tulloch" GivenName="Genny" IFPersonID="usagt8" NOC="USA" PersonID="usagt8"/>
+        Person( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
+        Person( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
+        Person( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
+        Person( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
+        Person( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
+        Person( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
+        Person( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
+        Person( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
+        Person( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
+        Person( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
+        Person( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
+        Person( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
+        Person( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
+        Person( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
+        Person( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
+        Person( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
     ]
   
     
@@ -43,16 +43,20 @@ class PersonTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        #if DEBUG
         print(#line,#function,"Number of sections: \(1)")
+        #endif
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        #if DEBUG
         print(#line,#function,"Section: \(section)")
+        #endif
         if section == 0 {
-//            #if DEBUG
-            print(#line,#function,persons.count)
-//            #endif
+            #if DEBUG
+            print(#line,#function,"Number of persons: \(persons.count)")
+            #endif
             return persons.count
         }
         return 0
