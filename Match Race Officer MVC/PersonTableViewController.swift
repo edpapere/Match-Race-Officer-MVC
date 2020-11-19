@@ -68,8 +68,12 @@ class PersonTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
 
         let person = persons[indexPath.row]
-        cell.textLabel?.text = "\(person.familyName) \(person.givenName)"
-        cell.detailTextLabel?.text = "\(person.ifPersonId) \(person.gender) (\(person.personId))"
+        
+        let personName = NSMutableAttributedString(string: person.givenName, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.labelFontSize)])
+        personName.append(NSAttributedString(string: " \(person.familyName)",attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)]))
+        cell.textLabel?.attributedText = personName
+        
+        cell.detailTextLabel?.text = "(\(person.personId)) \(person.ifPersonId) \(person.gender == .female ? "👩🏼" : "👦🏻")"
         // Configure the cell...
 
         cell.showsReorderControl = true
