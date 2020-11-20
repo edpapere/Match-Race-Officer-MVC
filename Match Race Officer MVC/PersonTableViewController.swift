@@ -69,11 +69,11 @@ class PersonTableViewController: UITableViewController {
 
         let person = persons[indexPath.row]
         
-        let personName = NSMutableAttributedString(string: person.givenName, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.labelFontSize)])
+        let personName = NSMutableAttributedString(string: "\(person.gender == .female ? "👩🏼" : "👦🏻") \(person.givenName)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.labelFontSize)])
         personName.append(NSAttributedString(string: " \(person.familyName)",attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)]))
         cell.textLabel?.attributedText = personName
         
-        cell.detailTextLabel?.text = "(\(person.personId)) \(person.ifPersonId) \(person.gender == .female ? "👩🏼" : "👦🏻")"
+        cell.detailTextLabel?.text = "(\(person.personId)) \(person.ifPersonId)"
         // Configure the cell...
 
         cell.showsReorderControl = true
