@@ -11,6 +11,7 @@ class AddEditPersonTableViewController: UITableViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var ifSailorIdTextField: UITextField!
     @IBOutlet weak var familyNameTextField: UITextField!
     @IBOutlet weak var givenNameTextField: UITextField!
@@ -30,13 +31,48 @@ class AddEditPersonTableViewController: UITableViewController {
             givenNameTextField.text = person.givenName
             genderTextField.text = person.gender.rawValue
         }
+        
+        updateSaveButtonState()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func updateSaveButtonState() {
+        let ifSailorID = ifSailorIdTextField.text ?? ""
+        let familyName = familyNameTextField.text ?? ""
+        let givenName = givenNameTextField.text ?? ""
+        let gender = genderTextField.text ?? ""
+        
+        let changedInEditMode =
+            person != nil ? ifSailorID != person!.ifPersonId || familyName != person!.familyName || givenName != person!.givenName || gender != person!.gender.rawValue : true
+        
+        saveButton.isEnabled = changedInEditMode && !ifSailorID.isEmpty && !familyName.isEmpty && !givenName.isEmpty && !gender.isEmpty
+        
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == "saveUnwind" else { return }
+        
+        let ifSailorID = ifSailorIdTextField.text ?? ""
+        let familyName = familyNameTextField.text ?? ""
+        let givenName = givenNameTextField.text ?? ""
+        let gender = genderTextField.text ?? ""
+        
+        if person == nil {
+            person = Person(ifPersonId: ifSailorID, familyName: familyName, givenName: givenName, gender: PersonGender(rawValue: gender) ?? .male)
+        } else {
+            person!.ifPersonId = ifSailorID
+            person!.familyName = familyName
+            person!.givenName = givenName
+            person!.gender = PersonGender(rawValue: gender) ?? .male
+        }
+        
+    }
     // MARK: - Table view data source
 
   
@@ -87,5 +123,8 @@ class AddEditPersonTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
 
 }

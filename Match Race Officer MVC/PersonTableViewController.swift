@@ -175,8 +175,22 @@ class PersonTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToPersonTableView(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
+        
+        guard unwindSegue.identifier == "saveUnwind" else { return }
+        
+        let sourceViewController = unwindSegue.source as! AddEditPersonTableViewController
+        
+        if let person = sourceViewController.person {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                persons[selectedIndexPath.row] = person
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: persons.count, section: 0)
+                persons.append(person)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+        
     }
   
     
