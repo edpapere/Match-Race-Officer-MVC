@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552F803E256860F40020567D /* AddEditPersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F803D256860F40020567D /* AddEditPersonTableViewController.swift */; };
 		5563C4832566D8AB0009AF4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4822566D8AB0009AF4D /* AppDelegate.swift */; };
 		5563C4852566D8AB0009AF4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4842566D8AB0009AF4D /* SceneDelegate.swift */; };
 		5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4862566D8AB0009AF4D /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		552F803D256860F40020567D /* AddEditPersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditPersonTableViewController.swift; sourceTree = "<group>"; };
 		5563C47F2566D8AB0009AF4D /* Match Race Officer MVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Match Race Officer MVC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5563C4822566D8AB0009AF4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5563C4842566D8AB0009AF4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				5563C4902566D8AF0009AF4D /* Info.plist */,
 				5563C4982566E0CD0009AF4D /* DataModel.swift */,
 				5563C49B2567034C0009AF4D /* Person.swift */,
+				552F803D256860F40020567D /* AddEditPersonTableViewController.swift */,
 			);
 			path = "Match Race Officer MVC";
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */,
 				5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */,
 				5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */,
+				552F803E256860F40020567D /* AddEditPersonTableViewController.swift in Sources */,
 				5563C4832566D8AB0009AF4D /* AppDelegate.swift in Sources */,
 				5563C4852566D8AB0009AF4D /* SceneDelegate.swift in Sources */,
 			);

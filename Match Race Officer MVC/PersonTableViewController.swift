@@ -40,7 +40,20 @@ class PersonTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditPerson" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let person = persons[indexPath.row]
+            let navController = segue.destination as! UINavigationController
+            let addEditPersonTableViewController = navController.topViewController as! AddEditPersonTableViewController
+            addEditPersonTableViewController.person = person
+        }
+    }
 
+    
+
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,12 +94,21 @@ class PersonTableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let person = persons[indexPath.row]
+        #if DEBUG
+        print(#line,#function,"\(person.familyName) \(person.givenName) \(indexPath)")
+        #endif
+    }
+    /*
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let person = persons[indexPath.row]
         #if DEBUG
         print(#line,#function,"\(person.familyName) \(person.givenName) \(indexPath)")
         #endif
     }
+    */
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedPerson = persons.remove(at: sourceIndexPath.row)
@@ -151,4 +173,11 @@ class PersonTableViewController: UITableViewController {
         persons.shuffle()
         tableView.reloadData()
     }
+    
+    @IBAction func unwindToPersonTableView(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+    }
+  
+    
 }
