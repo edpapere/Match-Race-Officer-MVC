@@ -15,7 +15,8 @@ class AddEditPersonTableViewController: UITableViewController {
     @IBOutlet weak var ifSailorIdTextField: UITextField!
     @IBOutlet weak var familyNameTextField: UITextField!
     @IBOutlet weak var givenNameTextField: UITextField!
-    @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var rootViewItem: UINavigationItem!
     
     // MARK: - Properties
     var person: Person? = nil
@@ -25,12 +26,20 @@ class AddEditPersonTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        genderSegmentedControl.selectedSegmentIndex = -1
+        
         if let person = person {
             ifSailorIdTextField.text = person.ifPersonId
             familyNameTextField.text = person.familyName
             givenNameTextField.text = person.givenName
-            genderTextField.text = person.gender.rawValue
+//            genderTextField.text = person.gender.rawValue
+            genderSegmentedControl.selectedSegmentIndex = person.gender == .male ? 0 : 1
+            rootViewItem.title = "Edit Person"
+        } else {
+            rootViewItem.title = "Add Person"
         }
+        
+        ifSailorIdTextField.constraints[0].constant = genderSegmentedControl.bounds.width
         
         updateSaveButtonState()
         // Uncomment the following line to preserve selection between presentations
@@ -44,12 +53,12 @@ class AddEditPersonTableViewController: UITableViewController {
         let ifSailorID = ifSailorIdTextField.text ?? ""
         let familyName = familyNameTextField.text ?? ""
         let givenName = givenNameTextField.text ?? ""
-        let gender = genderTextField.text ?? ""
+        let gender = genderSegmentedControl.selectedSegmentIndex
         
         let changedInEditMode =
-            person != nil ? ifSailorID != person!.ifPersonId || familyName != person!.familyName || givenName != person!.givenName || gender != person!.gender.rawValue : true
+            person != nil ? ifSailorID != person!.ifPersonId || familyName != person!.familyName || givenName != person!.givenName || gender != ( person!.gender == .male ? 0 : 1 ) : true
         
-        saveButton.isEnabled = changedInEditMode && !ifSailorID.isEmpty && !familyName.isEmpty && !givenName.isEmpty && !gender.isEmpty
+        saveButton.isEnabled = changedInEditMode && !ifSailorID.isEmpty && !familyName.isEmpty && !givenName.isEmpty && gender != -1
         
     }
 
@@ -61,15 +70,15 @@ class AddEditPersonTableViewController: UITableViewController {
         let ifSailorID = ifSailorIdTextField.text ?? ""
         let familyName = familyNameTextField.text ?? ""
         let givenName = givenNameTextField.text ?? ""
-        let gender = genderTextField.text ?? ""
+        let gender: PersonGender = genderSegmentedControl.selectedSegmentIndex == 0 ? .male : .female
         
         if person == nil {
-            person = Person(ifPersonId: ifSailorID, familyName: familyName, givenName: givenName, gender: PersonGender(rawValue: gender) ?? .male)
+            person = Person(ifPersonId: ifSailorID, familyName: familyName, givenName: givenName, gender: gender)
         } else {
             person!.ifPersonId = ifSailorID
             person!.familyName = familyName
             person!.givenName = givenName
-            person!.gender = PersonGender(rawValue: gender) ?? .male
+            person!.gender = gender
         }
         
     }
@@ -123,8 +132,8 @@ class AddEditPersonTableViewController: UITableViewController {
     }
     */
 
-    @IBAction func textFieldChanged(_ sender: UITextField) {
+    @IBAction func dataChanged(_ sender: Any) {
         updateSaveButtonState()
     }
-
+    
 }
