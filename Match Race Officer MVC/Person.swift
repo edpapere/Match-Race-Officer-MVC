@@ -5,7 +5,7 @@
 //  Created by Andrey Pereslavtsev on 19.11.2020.
 //
 
-import Foundation
+// import Foundation
 
 class Person {
     fileprivate static var nextId: PersonID = 1

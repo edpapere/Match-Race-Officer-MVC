@@ -5,10 +5,8 @@
 //  Created by Andrey Pereslavtsev on 19.11.2020.
 //
 
-// import Foundation
-
-
 typealias PersonID = Int
+typealias BoatID = Int
 
 enum PersonGender: String, CaseIterable {
     case male = "Male"
@@ -25,19 +23,11 @@ enum portStarboard: String, CaseIterable {
 
 typealias MatchID = Int
 typealias TeamID = Int
-typealias BoatID = Int
 typealias IFBoatID = String
 typealias NOC = String
 typealias EventGender = String
 
 typealias CrewPosition = String
-
-struct Boat {
-    var boatId: BoatID
-    var ifBoatId: IFBoatID?
-    var boatName: String?
-    var sailNumber: String
-}
 
 struct Crew {
     var personId: PersonID?
