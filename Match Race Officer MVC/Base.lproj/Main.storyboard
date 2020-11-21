@@ -70,7 +70,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="clB-WZ-U5x">
                         <rightBarButtonItems>
-                            <barButtonItem image="arrow.clockwise" catalog="system" id="dYK-a9-8gM">
+                            <barButtonItem systemItem="refresh" id="dYK-a9-8gM">
                                 <connections>
                                     <action selector="shuffleButtonTapped:" destination="cjr-YB-rDY" id="gH6-G8-FR6"/>
                                 </connections>
@@ -91,7 +91,7 @@
         <scene sceneID="mtv-tY-de0">
             <objects>
                 <tableViewController id="dpw-jx-uC0" customClass="AddEditPersonTableViewController" customModule="Match_Race_Officer_MVC" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="U7y-nq-2Bg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="U7y-nq-2Bg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -280,7 +280,6 @@
         <segue reference="FC3-Kf-Wn6"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
