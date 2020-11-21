@@ -73,9 +73,9 @@ class AddEditPersonTableViewController: UITableViewController {
         let gender: PersonGender = genderSegmentedControl.selectedSegmentIndex == 0 ? .male : .female
         
         if person == nil {
-            person = Person(ifPersonId: ifSailorID, familyName: familyName, givenName: givenName, gender: gender)
+            person = Person(ifPersonId: ifSailorID.uppercased(), familyName: familyName, givenName: givenName, gender: gender)
         } else {
-            person!.ifPersonId = ifSailorID
+            person!.ifPersonId = ifSailorID.uppercased()
             person!.familyName = familyName
             person!.givenName = givenName
             person!.gender = gender
@@ -133,6 +133,11 @@ class AddEditPersonTableViewController: UITableViewController {
     */
 
     @IBAction func dataChanged(_ sender: Any) {
+        if sender is UITextField {
+            if (sender as! UITextField ) == ifSailorIdTextField {
+                ifSailorIdTextField.text = ifSailorIdTextField.text!.uppercased()
+            }
+        }
         updateSaveButtonState()
     }
     

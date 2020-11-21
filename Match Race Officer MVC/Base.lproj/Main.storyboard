@@ -172,7 +172,7 @@
                                                                 <constraint firstAttribute="width" constant="150" id="HYl-TJ-LCi"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                                             <connections>
                                                                 <action selector="dataChanged:" destination="dpw-jx-uC0" eventType="editingChanged" id="Qbr-1W-7ij"/>
                                                             </connections>
@@ -211,7 +211,7 @@
                                                                 <segment title="Female"/>
                                                             </segments>
                                                             <connections>
-                                                                <action selector="dataChanged:" destination="dpw-jx-uC0" eventType="valueChanged" id="wt7-Lp-WUs"/>
+                                                                <action selector="dataChanged:" destination="dpw-jx-uC0" eventType="valueChanged" id="O6u-wC-9m3"/>
                                                             </connections>
                                                         </segmentedControl>
                                                     </subviews>
