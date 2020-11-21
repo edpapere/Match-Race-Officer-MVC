@@ -236,7 +236,7 @@
                     <navigationItem key="navigationItem" title="Person" id="tJx-9Z-0hn">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tl4-hO-6wz">
                             <connections>
-                                <segue destination="JfS-yL-9kc" kind="unwind" unwindAction="unwindToPersonTableView:" id="ztH-dV-KBR"/>
+                                <segue destination="JfS-yL-9kc" kind="unwind" identifier="cancelUnwind" unwindAction="unwindToPersonTableView:" id="ztH-dV-KBR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="DjQ-9Y-IgM">

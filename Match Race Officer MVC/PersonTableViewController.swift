@@ -176,7 +176,16 @@ class PersonTableViewController: UITableViewController {
     
     @IBAction func unwindToPersonTableView(_ unwindSegue: UIStoryboardSegue) {
         
-        guard unwindSegue.identifier == "saveUnwind" else { return }
+        #if DEBUG
+        print(#line,#function,"\(unwindSegue.identifier ?? "<unknown segue>")")
+        #endif
+        
+        guard unwindSegue.identifier == "saveUnwind" else {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+            }
+            return
+        }
         
         let sourceViewController = unwindSegue.source as! AddEditPersonTableViewController
         
@@ -184,6 +193,7 @@ class PersonTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 persons[selectedIndexPath.row] = person
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
             } else {
                 let newIndexPath = IndexPath(row: persons.count, section: 0)
                 persons.append(person)
