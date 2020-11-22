@@ -12,11 +12,11 @@ class AddEditPersonTableViewController: UITableViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var rootViewItem: UINavigationItem!
     @IBOutlet weak var ifSailorIdTextField: UITextField!
     @IBOutlet weak var familyNameTextField: UITextField!
     @IBOutlet weak var givenNameTextField: UITextField!
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var rootViewItem: UINavigationItem!
     
     // MARK: - Properties
     var person: Person? = nil
@@ -32,7 +32,6 @@ class AddEditPersonTableViewController: UITableViewController {
             ifSailorIdTextField.text = person.ifPersonId
             familyNameTextField.text = person.familyName
             givenNameTextField.text = person.givenName
-//            genderTextField.text = person.gender.rawValue
             genderSegmentedControl.selectedSegmentIndex = person.gender == .male ? 0 : 1
             rootViewItem.title = "Edit Person"
         } else {
@@ -59,6 +58,8 @@ class AddEditPersonTableViewController: UITableViewController {
             person != nil ? ifSailorID != person!.ifPersonId || familyName != person!.familyName || givenName != person!.givenName || gender != ( person!.gender == .male ? 0 : 1 ) : true
         
         saveButton.isEnabled = changedInEditMode && !ifSailorID.isEmpty && !familyName.isEmpty && !givenName.isEmpty && gender != -1
+        
+        
         
     }
 

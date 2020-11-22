@@ -11,7 +11,10 @@ class BoatTableViewController: UITableViewController {
     
     var boats: [Boat] = [
         Boat( ifBoatId: "", boatName: "Alpha", sailNumber: "A"),
-        Boat( ifBoatId: "", boatName: "Bravo", sailNumber: "B")
+        Boat( ifBoatId: "", boatName: "Bravo", shortName: "B", sailNumber: "B", isSpare: false),
+        Boat(shortName: "I", boatName: "India"),
+        Boat(shortName: "F", boatName: "Foxtrot")
+        
     ]
   
     
@@ -25,6 +28,18 @@ class BoatTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditBoat" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let boat = boats[indexPath.row]
+            let navController = segue.destination as! UINavigationController
+            let addEditBoatTableViewController = navController.topViewController as! AddEditBoatTableViewController
+            addEditBoatTableViewController.boat = boat
+        }
+    }
+
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,8 +65,8 @@ class BoatTableViewController: UITableViewController {
         // Configure the cell...
         let boat = boats[indexPath.row]
         
-        cell.textLabel?.text = "\(boat.sailNumber) \(boat.boatName)"
-        cell.detailTextLabel?.text = "(\(boat.boatId))"
+        cell.textLabel?.text = "\(boat.shortName) \(boat.boatName)"
+        cell.detailTextLabel?.text = "(\(boat.boatId) \(boat.sailNumber))"
 
         return cell
     }
@@ -101,5 +116,25 @@ class BoatTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func unwindToBoatTableView(_ unwindSegue: UIStoryboardSegue) {
+        #if DEBUG
+        print(#line,#function,"\(unwindSegue.identifier ?? "<unknown segue>")")
+        #endif
+        
+        let sourceViewController = unwindSegue.source as! AddEditBoatTableViewController
+        
+        if let boat = sourceViewController.boat {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                boats[selectedIndexPath.row] = boat
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+            } else {
+                let newIndexPath = IndexPath(row: boats.count, section: 0)
+                boats.append(boat)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+        
+    }
 }
