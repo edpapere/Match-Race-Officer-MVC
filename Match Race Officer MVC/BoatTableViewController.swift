@@ -10,8 +10,8 @@ import UIKit
 class BoatTableViewController: UITableViewController {
     
     var boats: [Boat] = [
-        Boat( ifBoatId: "", boatName: "Alpha", sailNumber: "A"),
-        Boat( ifBoatId: "", boatName: "Bravo", shortName: "B", sailNumber: "B", isSpare: false),
+        Boat( ifBoatId: "", boatName: "Alpha", shortName: "111", sailNumber: "RUS111", isSpare: false),
+        Boat( ifBoatId: "", boatName: "Bravo", shortName: "888", sailNumber: "RUS888", isSpare: false),
         Boat(shortName: "I", boatName: "India"),
         Boat(shortName: "F", boatName: "Foxtrot")
         
@@ -65,8 +65,8 @@ class BoatTableViewController: UITableViewController {
         // Configure the cell...
         let boat = boats[indexPath.row]
         
-        cell.textLabel?.text = "\(boat.shortName) \(boat.boatName)"
-        cell.detailTextLabel?.text = "(\(boat.boatId) \(boat.sailNumber))"
+        cell.textLabel?.text = "\(boat.shortName)  \(boat.boatName)"
+        cell.detailTextLabel?.text = "(\(boat.boatId))  \(boat.sailNumber)"
 
         return cell
     }

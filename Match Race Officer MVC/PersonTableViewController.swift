@@ -9,6 +9,8 @@ import UIKit
 
 class PersonTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     var persons: [Person] = [
         Person( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
         Person( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
@@ -28,28 +30,20 @@ class PersonTableViewController: UITableViewController {
         Person( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
     ]
   
-    
+    // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.rightBarButtonItem = editButtonItem
-        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditPerson" {
-            let indexPath = tableView.indexPathForSelectedRow!
-            let person = persons[indexPath.row]
-            let navController = segue.destination as! UINavigationController
-            let addEditPersonTableViewController = navController.topViewController as! AddEditPersonTableViewController
-            addEditPersonTableViewController.person = person
-        }
-    }
+
 
     
 
@@ -158,16 +152,22 @@ class PersonTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EditPerson" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let person = persons[indexPath.row]
+            let navController = segue.destination as! UINavigationController
+            let addEditPersonTableViewController = navController.topViewController as! AddEditPersonTableViewController
+            addEditPersonTableViewController.person = person
+        }
     }
-    */
-
+    
+    
+    // MARK: - IB Actions
+    
     @IBAction func shuffleButtonTapped(_ sender: UIBarButtonItem) {
 //        tableView.setEditing(!tableView.isEditing, animated: true)
         persons.shuffle()

@@ -83,7 +83,7 @@ is not implemented yet</string>
             </objects>
             <point key="canvasLocation" x="128" y="104"/>
         </scene>
-        <!--Person Table View Controller-->
+        <!--Persons-->
         <scene sceneID="qwc-3Q-88k">
             <objects>
                 <tableViewController id="cjr-YB-rDY" customClass="PersonTableViewController" customModule="Match_Race_Officer_MVC" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,7 +125,7 @@ is not implemented yet</string>
                             <outlet property="delegate" destination="cjr-YB-rDY" id="Wk7-7l-Q78"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="clB-WZ-U5x">
+                    <navigationItem key="navigationItem" title="Persons" id="clB-WZ-U5x">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="dYK-a9-8gM">
                                 <connections>
@@ -176,7 +176,7 @@ is not implemented yet</string>
             </objects>
             <point key="canvasLocation" x="1021" y="829"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Boats-->
         <scene sceneID="bVJ-nV-HS4">
             <objects>
                 <tableViewController id="0tP-G5-bmc" customClass="BoatTableViewController" customModule="Match_Race_Officer_MVC" customModuleProvider="target" sceneMemberID="viewController">
@@ -218,7 +218,7 @@ is not implemented yet</string>
                             <outlet property="delegate" destination="0tP-G5-bmc" id="dF9-35-AYP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="y39-Gu-tGC">
+                    <navigationItem key="navigationItem" title="Boats" id="y39-Gu-tGC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Ga-be-L26">
                             <connections>
                                 <segue destination="Xl7-hb-Q6F" kind="presentation" identifier="AddBoat" id="jNb-Nl-T1P"/>

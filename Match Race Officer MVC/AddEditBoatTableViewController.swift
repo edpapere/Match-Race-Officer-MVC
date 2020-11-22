@@ -30,6 +30,7 @@ class AddEditBoatTableViewController: UITableViewController {
             ifBoatIdTextField.text = boat.ifBoatId
             boatNameTextField.text = boat.boatName
             shortNameTextField.text = boat.shortName
+            sailNumberTextField.text = boat.sailNumber
             isSpareBoatSwitch.isOn = boat.isSpare
             rootViewItem.title = "Edit Boat"
         } else {
