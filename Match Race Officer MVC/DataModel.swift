@@ -97,3 +97,36 @@ let RoundRobin6S6B = EventStage(
         )
     ]
 )
+
+let Finals = EventStage(
+    flights: [
+        Flight(
+            matches: [
+                Match(portSideTeam: 2, portSideBoat: 2, stbdSideTeam: 1, stbdSideBoat: 1),
+                Match(portSideTeam: 4, portSideBoat: 4, stbdSideTeam: 3, stbdSideBoat: 3)
+            ]
+        ),
+        Flight(
+            matches: [
+                Match(portSideTeam: 1, portSideBoat: 1, stbdSideTeam: 2, stbdSideBoat: 2),
+                Match(portSideTeam: 3, portSideBoat: 3, stbdSideTeam: 4, stbdSideBoat: 4)
+            ]
+        ),
+        Flight(
+            matches: [
+                Match(portSideTeam: 2, portSideBoat: 1, stbdSideTeam: 1, stbdSideBoat: 2),
+                Match(portSideTeam: 4, portSideBoat: 3, stbdSideTeam: 3, stbdSideBoat: 4)
+            ]
+        ),
+        Flight(
+            matches: [
+                Match(portSideTeam: 1, portSideBoat: 2, stbdSideTeam: 2, stbdSideBoat: 1)
+            ]
+        ),
+        Flight(
+            matches: [
+                Match(portSideTeam: 2, portSideBoat: 2, stbdSideTeam: 1, stbdSideBoat: 1)
+            ]
+        )
+    ]
+)

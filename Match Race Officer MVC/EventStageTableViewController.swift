@@ -11,7 +11,7 @@ class EventStageTableViewController: UITableViewController {
 
     var match = Match(portSideTeam: 1, portSideBoat: 1, stbdSideTeam: 2, stbdSideBoat: 2)
     
-    var eventStage = RoundRobin6S6B
+    var eventStage = Finals // RoundRobin6S6B
     
     override func viewDidLoad() {
         super.viewDidLoad()
