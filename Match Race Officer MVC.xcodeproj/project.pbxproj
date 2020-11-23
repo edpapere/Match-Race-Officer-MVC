@@ -12,6 +12,7 @@
 		552F80452569805C0020567D /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F80442569805C0020567D /* Boat.swift */; };
 		552F8048256A9A5C0020567D /* AddEditBoatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */; };
 		552F804B256AF4970020567D /* EventStageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F804A256AF4970020567D /* EventStageTableViewController.swift */; };
+		552F804E256B09EC0020567D /* FlightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F804D256B09EC0020567D /* FlightTableViewCell.swift */; };
 		5563C4832566D8AB0009AF4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4822566D8AB0009AF4D /* AppDelegate.swift */; };
 		5563C4852566D8AB0009AF4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4842566D8AB0009AF4D /* SceneDelegate.swift */; };
 		5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4862566D8AB0009AF4D /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		552F80442569805C0020567D /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
 		552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditBoatTableViewController.swift; sourceTree = "<group>"; };
 		552F804A256AF4970020567D /* EventStageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStageTableViewController.swift; sourceTree = "<group>"; };
+		552F804D256B09EC0020567D /* FlightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTableViewCell.swift; sourceTree = "<group>"; };
 		5563C47F2566D8AB0009AF4D /* Match Race Officer MVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Match Race Officer MVC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5563C4822566D8AB0009AF4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5563C4842566D8AB0009AF4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				552F80442569805C0020567D /* Boat.swift */,
 				552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */,
 				552F804A256AF4970020567D /* EventStageTableViewController.swift */,
+				552F804D256B09EC0020567D /* FlightTableViewCell.swift */,
 			);
 			path = "Match Race Officer MVC";
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5563C49C2567034C0009AF4D /* Person.swift in Sources */,
+				552F804E256B09EC0020567D /* FlightTableViewCell.swift in Sources */,
 				5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */,
 				5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */,
 				552F804B256AF4970020567D /* EventStageTableViewController.swift in Sources */,

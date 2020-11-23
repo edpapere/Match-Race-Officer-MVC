@@ -23,6 +23,11 @@ class EventStageTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,7 +43,7 @@ class EventStageTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FlightTableViewCell
 
         // Configure the cell...
         let match = eventStage.flights[indexPath.section].matches[indexPath.row]
@@ -59,14 +64,26 @@ class EventStageTableViewController: UITableViewController {
             }
         }
         
-        cell.textLabel?.text = "B\(match.portSideBoat):Skip\(match.portSideTeam):\(portWillChange)"
-        cell.detailTextLabel?.text = "B\(match.stbdSideBoat):Skip\(match.stbdSideTeam):\(stbdWillChange)"
+//        cell.textLabel?.text = "B\(match.portSideBoat):Skip\(match.portSideTeam):\(portWillChange)"
+//        cell.detailTextLabel?.text = "B\(match.stbdSideBoat):Skip\(match.stbdSideTeam):\(stbdWillChange)"
 
+        cell.update(with: match, as: indexPath.row, markPort: portWillChange, markStbd: stbdWillChange)
+        
         return cell
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Flight \(section+1)"
+        
+        // If you want to return a custom header view with something more than just some text, you should use viewForHeaderInSection instead, like this:
+        /*
+        override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let vw = UIView()
+            vw.backgroundColor = UIColor.red
+
+            return vw
+        }
+        */
     }
     
     /*

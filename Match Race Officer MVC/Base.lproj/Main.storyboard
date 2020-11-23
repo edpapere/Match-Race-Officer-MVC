@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hDp-dg-fJA">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDp-dg-fJA">
                                 <rect key="frame" x="20" y="20" width="374" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Match Race Officer
@@ -510,29 +510,71 @@ is not implemented yet</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="Dw9-jY-4M4" detailTextLabel="Vms-CH-ulo" style="IBUITableViewCellStyleValue1" id="vXF-0e-AWv">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="vXF-0e-AWv" customClass="FlightTableViewCell" customModule="Match_Race_Officer_MVC" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vXF-0e-AWv" id="qcV-VQ-Cqm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dw9-jY-4M4">
-                                            <rect key="frame" x="20" y="11.999999999999998" width="33" height="20.333333333333332"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vms-CH-ulo">
-                                            <rect key="frame" x="350.33333333333331" y="11.999999999999998" width="43.666666666666664" height="20.333333333333332"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="LJz-Mm-syF">
+                                            <rect key="frame" x="1" y="11.000000000000002" width="412" height="20.666666666666671"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejh-aD-NLu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="26.333333333333332" height="20.666666666666668"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUh-mN-6fO">
+                                                    <rect key="frame" x="28.333333333333329" y="0.0" width="38" height="20.666666666666668"/>
+                                                    <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Port Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8j-IG-vQM">
+                                                    <rect key="frame" x="68.333333333333314" y="0.0" width="151" height="20.666666666666668"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6C1-hH-viJ">
+                                                    <rect key="frame" x="221.33333333333334" y="0.0" width="37.666666666666657" height="20.666666666666668"/>
+                                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starboard Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwH-C1-ROD">
+                                                    <rect key="frame" x="261" y="0.0" width="151" height="20.666666666666668"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YwH-C1-ROD" firstAttribute="width" secondItem="e8j-IG-vQM" secondAttribute="width" id="T3y-4x-ChI"/>
+                                                <constraint firstItem="6C1-hH-viJ" firstAttribute="width" secondItem="wUh-mN-6fO" secondAttribute="width" id="bPc-bT-X0h"/>
+                                                <constraint firstItem="e8j-IG-vQM" firstAttribute="width" secondItem="wUh-mN-6fO" secondAttribute="width" multiplier="4" id="ewq-lf-N2Q"/>
+                                                <constraint firstItem="ejh-aD-NLu" firstAttribute="width" secondItem="wUh-mN-6fO" secondAttribute="width" multiplier="0.7" id="ucM-ov-teM"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="LJz-Mm-syF" firstAttribute="leading" secondItem="qcV-VQ-Cqm" secondAttribute="leading" constant="1" id="XiT-F3-vsz"/>
+                                        <constraint firstItem="LJz-Mm-syF" firstAttribute="top" secondItem="qcV-VQ-Cqm" secondAttribute="topMargin" id="Y15-GM-Gkb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LJz-Mm-syF" secondAttribute="bottom" constant="1.3300000000000001" id="bKA-kR-aIU"/>
+                                        <constraint firstAttribute="trailing" secondItem="LJz-Mm-syF" secondAttribute="trailing" constant="1" id="jAi-Lf-IbI"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="matchNumberLabel" destination="ejh-aD-NLu" id="Wvu-PX-i0u"/>
+                                    <outlet property="portSideBoatLabel" destination="wUh-mN-6fO" id="6Oj-Qa-nFQ"/>
+                                    <outlet property="portSideTeamLabel" destination="e8j-IG-vQM" id="qn6-dU-Xgi"/>
+                                    <outlet property="stbdSideBoatLabel" destination="6C1-hH-viJ" id="U1v-va-XKE"/>
+                                    <outlet property="stbdSideTeamLabel" destination="YwH-C1-ROD" id="M8e-Wd-i5j"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -544,7 +586,7 @@ is not implemented yet</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rp-nE-TBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1017" y="2315"/>
+            <point key="canvasLocation" x="1015.9420289855074" y="2314.4021739130435"/>
         </scene>
         <!--Format-->
         <scene sceneID="q6B-k0-hZx">
@@ -851,6 +893,12 @@ is not implemented yet</string>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
