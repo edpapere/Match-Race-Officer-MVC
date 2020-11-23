@@ -48,9 +48,10 @@ class EventStageTableViewController: UITableViewController {
         // Configure the cell...
         let match = eventStage.flights[indexPath.section].matches[indexPath.row]
         
+        
+        /*
         var portWillChange = false
         var stbdWillChange = false
-        
         if indexPath.section < eventStage.flights.count-1 {
             for next in eventStage.flights[indexPath.section+1].matches {
                 portWillChange =
@@ -64,11 +65,32 @@ class EventStageTableViewController: UITableViewController {
             }
         }
         
+        
+        
 //        cell.textLabel?.text = "B\(match.portSideBoat):Skip\(match.portSideTeam):\(portWillChange)"
 //        cell.detailTextLabel?.text = "B\(match.stbdSideBoat):Skip\(match.stbdSideTeam):\(stbdWillChange)"
 
         cell.update(with: match, as: indexPath.row, markPort: portWillChange, markStbd: stbdWillChange)
+
+        */
         
+        
+        var portJustChanged = false
+        var stbdJustChanged = false
+        
+        if indexPath.section > 0 {
+            for previous in eventStage.flights[indexPath.section-1].matches {
+                portJustChanged =
+                    ( match.portSideBoat == previous.portSideBoat && match.portSideTeam != previous.portSideTeam ) ||
+                    ( match.portSideBoat == previous.stbdSideBoat && match.portSideTeam != previous.stbdSideTeam )
+                stbdJustChanged =
+                    ( match.stbdSideBoat == previous.portSideBoat && match.stbdSideTeam != previous.portSideTeam ) ||
+                    ( match.stbdSideBoat == previous.stbdSideBoat && match.stbdSideTeam != previous.stbdSideTeam )
+            }
+        }
+        
+        cell.update(with: match, as: indexPath.row, markPort: portJustChanged, markStbd: stbdJustChanged)
+
         return cell
     }
 

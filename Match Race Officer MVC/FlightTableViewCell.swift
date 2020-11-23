@@ -42,6 +42,10 @@ class FlightTableViewCell: UITableViewCell {
         var blueColor: UIColor = UIColor(hue: 0.600, saturation: 0.400, brightness: 1.000, alpha: 1.000) // .cyan
         var yellColor: UIColor = UIColor(hue: 0.130, saturation: 0.600, brightness: 1.000, alpha: 1.000) // .yellow
         
+        // alternative colors from Excel
+        // Blue:   RGB(0.600,0.800,1.000) / RGB256(153,204,255) / HSB( 210/360,0.400,1.000) = HSB(0.583,0.400,1.000)
+        // Yellow: RGB(0.996,1.000,0.600) / RGB256(254,255,153) / HSB(60.6/360,0.400,1.000) = HSB(0.168,0.400,1.000)
+        
         //var yellColor: UIColor = UIColor(hue: 0.10, saturation: 0.50, brightness: 0.90, alpha: 1) //lightGray
         //  var yellColor: UIColor = UIColor(hue: 0.15, saturation: 0.40, brightness: 1.00, alpha: 1) //lightGray
         
