@@ -34,6 +34,19 @@ class EventStageTableViewController: UITableViewController {
         // 05 ScrollView didscroll and resizing image view
         // https://www.youtube.com/watch?v=yBOxtJfHLL4
         
+        // Custom TableView Section Headers - Part 25 - Itinerary App (iOS, Xcode 10, Swift 4)
+        // https://www.youtube.com/watch?v=_z2etS0mHYw
+        
+        // Swift: Background gradient for UIView
+        // https://stackoverflow.com/questions/50037160/swift-background-gradient-for-uiview
+        
+        // Swift Gradient in 4 lines of code
+        // https://medium.com/better-programming/swift-gradient-in-4-lines-of-code-6f81809da741
+        
+        // How to Create Advanced Gradients in Swift with CAGradientLayer — iOS Swift Guide
+        // https://medium.com/swlh/how-to-create-a-custom-gradient-in-swift-with-cagradientlayer-ios-swift-guide-190941cb3db2
+        
+        
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
        
         self.tableView.sectionHeaderHeight = UITableView.automaticDimension;
