@@ -11,7 +11,7 @@ class EventStageTableViewController: UITableViewController {
 
     var match = Match(portSideTeam: 1, portSideBoat: 1, stbdSideTeam: 2, stbdSideBoat: 2)
     
-    var eventStage = Finals // RoundRobin6S6B
+    var eventStage = RoundRobin6S6B // Finals // RoundRobin6S6B
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +21,30 @@ class EventStageTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        let nib = UINib(nibName: "FlightTableViewHeaderView", bundle: nil)
+//        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "flightTableViewHeaderView")
+        
+        
+        // 03 TableView Content Insets
+        // https://www.youtube.com/watch?v=I0hC2nmpAsw
+        
+        // 04 UIImageView Setup
+        // https://www.youtube.com/watch?v=4bNaJcmT2HY
+        
+        // 05 ScrollView didscroll and resizing image view
+        // https://www.youtube.com/watch?v=yBOxtJfHLL4
+        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+       
+        self.tableView.sectionHeaderHeight = UITableView.automaticDimension;
+        self.tableView.estimatedSectionHeaderHeight = 60;
+        
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         tableView.reloadData()
+        
     }
     
     // MARK: - Table view data source
@@ -81,9 +100,11 @@ class EventStageTableViewController: UITableViewController {
         if indexPath.section > 0 {
             for previous in eventStage.flights[indexPath.section-1].matches {
                 portJustChanged =
+                    portJustChanged ||
                     ( match.portSideBoat == previous.portSideBoat && match.portSideTeam != previous.portSideTeam ) ||
                     ( match.portSideBoat == previous.stbdSideBoat && match.portSideTeam != previous.stbdSideTeam )
                 stbdJustChanged =
+                    stbdJustChanged ||
                     ( match.stbdSideBoat == previous.portSideBoat && match.stbdSideTeam != previous.portSideTeam ) ||
                     ( match.stbdSideBoat == previous.stbdSideBoat && match.stbdSideTeam != previous.stbdSideTeam )
             }
@@ -91,22 +112,36 @@ class EventStageTableViewController: UITableViewController {
         
         cell.update(with: match, as: indexPath.row, markPort: portJustChanged, markStbd: stbdJustChanged)
 
+        //textFieldCell.layer.borderColor = UIColor.orange.cgColor
+        //cell.layer.borderColor = UIColor.orange.cgColor
+        //cell.layer.borderWidth = 2
+        
+      
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Flight \(section+1)"
-        
-        // If you want to return a custom header view with something more than just some text, you should use viewForHeaderInSection instead, like this:
-        /*
-        override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let vw = UIView()
-            vw.backgroundColor = UIColor.red
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        25
+//    }
+//
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Flight \(section+1)"
+//    }
 
-            return vw
-        }
-        */
+    
+     
+    /// Implements custom title for section header
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "flightTableViewHeaderView") as! FlightTableViewCell
+        cell.update(title: "Flight \(section+1)")
+        return cell.contentView
     }
+
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 60
+//    }
+
     
     /*
     // Override to support conditional editing of the table view.

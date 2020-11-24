@@ -11,14 +11,29 @@ class FlightTableViewCell: UITableViewCell {
 
     // MARK: - IB Outlets
     
+    
+    
     @IBOutlet weak var matchNumberLabel: UILabel!
     @IBOutlet weak var portSideBoatLabel: UILabel!
     @IBOutlet weak var portSideTeamLabel: UILabel!
     @IBOutlet weak var stbdSideBoatLabel: UILabel!
     @IBOutlet weak var stbdSideTeamLabel: UILabel!
     
- //   @IBOutlet weak var separatorView3: UIView!
     
+    @IBOutlet weak var headerTitleLabel2: UILabel!
+    @IBOutlet weak var matchNumberLabel2: UILabel!
+    @IBOutlet weak var portSideBoatLabel2: UILabel!
+    @IBOutlet weak var portSideTeamLabel2: UILabel!
+    @IBOutlet weak var stbdSideBoatLabel2: UILabel!
+    @IBOutlet weak var stbdSideTeamLabel2: UILabel!
+    // MARK: - Properties
+    
+    static let grey4light     = UIColor(hue: 0.000, saturation: 0.000, brightness: 0.200, alpha: 0.100)
+    static let blue4light     = UIColor(hue: 0.600, saturation: 0.400, brightness: 1.000, alpha: 1.000)
+    static let yellow4light   = UIColor(hue: 0.130, saturation: 0.600, brightness: 1.000, alpha: 1.000)
+    static let grey4dark      = UIColor(hue: 0.000, saturation: 0.000, brightness: 0.900, alpha: 0.300)
+    static let blue4dark      = UIColor(hue: 0.600, saturation: 1.000, brightness: 1.000, alpha: 0.700)
+    static let yellow4dark    = UIColor(hue: 0.130, saturation: 1.000, brightness: 1.000, alpha: 0.700)
     
     
     // MARK: - Methods
@@ -90,9 +105,45 @@ class FlightTableViewCell: UITableViewCell {
         stbdSideTeamLabel.text = " Skipper \(match.stbdSideTeam)"
         portSideBoatLabel.backgroundColor = blueColor
         stbdSideBoatLabel.backgroundColor = yellColor
-        if markPort { portSideTeamLabel.backgroundColor = greyColor }
-        if markStbd { stbdSideTeamLabel.backgroundColor = greyColor }
+        portSideTeamLabel.backgroundColor = markPort ? greyColor : nil
+        stbdSideTeamLabel.backgroundColor = markStbd ? greyColor : nil
     
     }
 
+    
+    func update(title: String) {
+
+        var blueColor = FlightTableViewCell.blue4light
+        var yellColor = FlightTableViewCell.yellow4light
+        
+        if #available(iOS 12.0, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                blueColor = FlightTableViewCell.blue4dark
+                yellColor = FlightTableViewCell.yellow4dark
+            }
+        }
+        
+        headerTitleLabel2.text = title
+        
+        matchNumberLabel2.text = "Match"
+        portSideBoatLabel2.text = "Boat"
+        portSideTeamLabel2.text = "Blue"
+        stbdSideBoatLabel2.text = "Boat"
+        stbdSideTeamLabel2.text = "Yellow"
+        headerTitleLabel2.backgroundColor = nil
+        if #available(iOS 13.0, *) {
+            matchNumberLabel2.backgroundColor = .systemBackground
+        } else {
+            matchNumberLabel2.backgroundColor = .white
+        }
+        portSideBoatLabel2.backgroundColor = blueColor
+        portSideTeamLabel2.backgroundColor = blueColor
+        stbdSideBoatLabel2.backgroundColor = yellColor
+        stbdSideTeamLabel2.backgroundColor = yellColor
+        //self.contentView.backgroundColor = nil
+        headerTitleLabel2.superview?.backgroundColor = nil
+    
+    }
+
+    
 }
