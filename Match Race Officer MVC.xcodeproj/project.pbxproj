@@ -22,6 +22,8 @@
 		5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4982566E0CD0009AF4D /* DataModel.swift */; };
 		5563C49C2567034C0009AF4D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49B2567034C0009AF4D /* Person.swift */; };
 		5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49E2567105D0009AF4D /* PersonTableViewController.swift */; };
+		55FD44B9256D368100BE88A6 /* excel-file.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FD44B6256D368100BE88A6 /* excel-file.png */; };
+		55FD44BD256D368100BE88A6 /* mrctlogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55FD44BC256D368100BE88A6 /* mrctlogo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		5563C4982566E0CD0009AF4D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		5563C49B2567034C0009AF4D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		5563C49E2567105D0009AF4D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		55FD44B6256D368100BE88A6 /* excel-file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "excel-file.png"; sourceTree = "<group>"; };
+		55FD44BC256D368100BE88A6 /* mrctlogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mrctlogo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		5563C4812566D8AB0009AF4D /* Match Race Officer MVC */ = {
 			isa = PBXGroup;
 			children = (
+				55FD44B2256D35EE00BE88A6 /* Graphic Assets */,
 				5563C4822566D8AB0009AF4D /* AppDelegate.swift */,
 				5563C4842566D8AB0009AF4D /* SceneDelegate.swift */,
 				5563C4862566D8AB0009AF4D /* ViewController.swift */,
@@ -92,6 +97,23 @@
 				552F804D256B09EC0020567D /* FlightTableViewCell.swift */,
 			);
 			path = "Match Race Officer MVC";
+			sourceTree = "<group>";
+		};
+		55FD44B2256D35EE00BE88A6 /* Graphic Assets */ = {
+			isa = PBXGroup;
+			children = (
+				55FD44B4256D368100BE88A6 /* MR Pairing Icon */,
+			);
+			path = "Graphic Assets";
+			sourceTree = "<group>";
+		};
+		55FD44B4256D368100BE88A6 /* MR Pairing Icon */ = {
+			isa = PBXGroup;
+			children = (
+				55FD44B6256D368100BE88A6 /* excel-file.png */,
+				55FD44BC256D368100BE88A6 /* mrctlogo.jpg */,
+			);
+			path = "MR Pairing Icon";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5563C48F2566D8AF0009AF4D /* LaunchScreen.storyboard in Resources */,
+				55FD44B9256D368100BE88A6 /* excel-file.png in Resources */,
 				5563C48C2566D8AF0009AF4D /* Assets.xcassets in Resources */,
+				55FD44BD256D368100BE88A6 /* mrctlogo.jpg in Resources */,
 				5563C48A2566D8AB0009AF4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
