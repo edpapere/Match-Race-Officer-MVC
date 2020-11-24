@@ -46,6 +46,42 @@ class EventStageTableViewController: UITableViewController {
         // How to Create Advanced Gradients in Swift with CAGradientLayer — iOS Swift Guide
         // https://medium.com/swlh/how-to-create-a-custom-gradient-in-swift-with-cagradientlayer-ios-swift-guide-190941cb3db2
         
+        // Nested Sections in UITableView
+        // https://sapandiwakar.in/nested-sections-in-uitableview/
+        
+        // iOS: How to build a Table View with Collapsible Sections
+        // https://medium.com/ios-os-x-development/ios-how-to-build-a-table-view-with-collapsible-sections-96badf3387d0
+        
+        // Dealing with Complex Table Views in iOS and Keeping Your Sanity
+        // https://medium.cobeisfresh.com/dealing-with-complex-table-views-in-ios-and-keeping-your-sanity-ff5fee1fbb83
+        
+        // Expanded TableView Cells
+        // https://swiftbook.ru/post/tutorials/expanded-tableview-cells/
+        
+        // Draw vertical separator on UITableViewCell
+        // https://stackoverflow.com/questions/10563989/draw-vertical-separator-on-uitableviewcell/10564866
+        
+        // Custom Icons (iOS 12 and Earlier)
+        // https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/custom-icons/
+        
+        // App Icon
+        // https://developer.apple.com/design/human-interface-guidelines/watchos/visual/app-icon/
+        
+        // https://www.pngtosvg.com
+        // https://github.com/dsward2/macSVG/releases/
+        
+        // Creating Custom Symbol Images for Your App
+        // https://developer.apple.com/documentation/uikit/uiimage/creating_custom_symbol_images_for_your_app
+        
+        // Swift 3: Twitter - Tweets String Formatting Tips And Tricks with NSAttributedString (Ep 9)
+        // https://www.youtube.com/watch?v=slGx90YoX3Q
+        
+        // Swift: Youtube - Custom Tab Bar / Menu Bar using UICollectionView (Ep 3)
+        // https://www.youtube.com/watch?v=rRhJGnSmEKQ
+        
+        // How to make a Custom UITabBarController with sized icons that aren’t too big in Swift 4.2 & Xcode 10
+        // https://www.youtube.com/watch?v=6dctpl_n37I
+        
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
        
