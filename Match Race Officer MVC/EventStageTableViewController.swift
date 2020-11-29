@@ -82,11 +82,46 @@ class EventStageTableViewController: UITableViewController {
         // How to make a Custom UITabBarController with sized icons that aren’t too big in Swift 4.2 & Xcode 10
         // https://www.youtube.com/watch?v=6dctpl_n37I
         
+        // Slide menu | iOS Swift
+        // https://www.youtube.com/watch?v=Sws8vmYgneo&list=PLc3QDCvaliNSVKfI7ToyP_f2eV7sV4NAG&index=44&t=0s
         
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        
+        // setupTableView()
+        
+        //tableView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 20, right: 0)
+        
        
-        self.tableView.sectionHeaderHeight = UITableView.automaticDimension;
-        self.tableView.estimatedSectionHeaderHeight = 60;
+        tableView.sectionHeaderHeight = UITableView.automaticDimension;
+        tableView.estimatedSectionHeaderHeight = 60;
+        
+//        let stackView = UIStackView()
+//        stackView.axis = .horizontal
+//        stackView.alignment = .fill
+//        stackView.distribution  = .fill
+//
+//        let labelMatch = UILabel()
+//        labelMatch.text = "Match"
+//        labelMatch.backgroundColor = UIColor.yellow
+//        labelMatch.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+//        labelMatch.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+//
+//
+//        stackView.addArrangedSubview(labelMatch)
+//        stackView.bounds = CGRect(x: 0, y: 0, width: 100, height: 50)
+//        view.addSubview(stackView)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "flightTableViewHeaderView") as! FlightTableViewCell
+        cell.update(title: "Header")
+        // cell.contentView.bounds = CGRect(x: 0, y: 0, width: 100, height: 50)
+        cell.contentView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        cell.contentView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        cell.contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        
+        view.addSubview(cell.contentView)
+        //view.ad
+        
+         tableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 20, right: 0)
+        
         
     }
 

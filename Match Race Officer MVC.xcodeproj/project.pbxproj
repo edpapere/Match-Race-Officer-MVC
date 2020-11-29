@@ -22,6 +22,10 @@
 		5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4982566E0CD0009AF4D /* DataModel.swift */; };
 		5563C49C2567034C0009AF4D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49B2567034C0009AF4D /* Person.swift */; };
 		5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49E2567105D0009AF4D /* PersonTableViewController.swift */; };
+		55D2F8DE2573DE0F0066936C /* HeadedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */; };
+		55D2F8E12573F0BB0066936C /* MatchTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */; };
+		55D2F8E42573F9020066936C /* MatchTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */; };
+		55D2F8E72574407A0066936C /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8E62574407A0066936C /* constants.swift */; };
 		55FD44B9256D368100BE88A6 /* excel-file.png in Resources */ = {isa = PBXBuildFile; fileRef = 55FD44B6256D368100BE88A6 /* excel-file.png */; };
 		55FD44BD256D368100BE88A6 /* mrctlogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 55FD44BC256D368100BE88A6 /* mrctlogo.jpg */; };
 /* End PBXBuildFile section */
@@ -44,6 +48,10 @@
 		5563C4982566E0CD0009AF4D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		5563C49B2567034C0009AF4D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		5563C49E2567105D0009AF4D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadedTableViewController.swift; sourceTree = "<group>"; };
+		55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchTableHeaderView.xib; sourceTree = "<group>"; };
+		55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableHeaderView.swift; sourceTree = "<group>"; };
+		55D2F8E62574407A0066936C /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		55FD44B6256D368100BE88A6 /* excel-file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "excel-file.png"; sourceTree = "<group>"; };
 		55FD44BC256D368100BE88A6 /* mrctlogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mrctlogo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +86,7 @@
 		5563C4812566D8AB0009AF4D /* Match Race Officer MVC */ = {
 			isa = PBXGroup;
 			children = (
+				55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */,
 				55FD44B2256D35EE00BE88A6 /* Graphic Assets */,
 				5563C4822566D8AB0009AF4D /* AppDelegate.swift */,
 				5563C4842566D8AB0009AF4D /* SceneDelegate.swift */,
@@ -95,6 +104,9 @@
 				552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */,
 				552F804A256AF4970020567D /* EventStageTableViewController.swift */,
 				552F804D256B09EC0020567D /* FlightTableViewCell.swift */,
+				55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */,
+				55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */,
+				55D2F8E62574407A0066936C /* constants.swift */,
 			);
 			path = "Match Race Officer MVC";
 			sourceTree = "<group>";
@@ -177,6 +189,7 @@
 				55FD44B9256D368100BE88A6 /* excel-file.png in Resources */,
 				5563C48C2566D8AF0009AF4D /* Assets.xcassets in Resources */,
 				55FD44BD256D368100BE88A6 /* mrctlogo.jpg in Resources */,
+				55D2F8E12573F0BB0066936C /* MatchTableHeaderView.xib in Resources */,
 				5563C48A2566D8AB0009AF4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,15 +203,18 @@
 			files = (
 				5563C49C2567034C0009AF4D /* Person.swift in Sources */,
 				552F804E256B09EC0020567D /* FlightTableViewCell.swift in Sources */,
+				55D2F8DE2573DE0F0066936C /* HeadedTableViewController.swift in Sources */,
 				5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */,
 				5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */,
 				552F804B256AF4970020567D /* EventStageTableViewController.swift in Sources */,
 				552F80452569805C0020567D /* Boat.swift in Sources */,
 				5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */,
+				55D2F8E72574407A0066936C /* constants.swift in Sources */,
 				552F803E256860F40020567D /* AddEditPersonTableViewController.swift in Sources */,
 				552F804225697FDD0020567D /* BoatTableViewController.swift in Sources */,
 				552F8048256A9A5C0020567D /* AddEditBoatTableViewController.swift in Sources */,
 				5563C4832566D8AB0009AF4D /* AppDelegate.swift in Sources */,
+				55D2F8E42573F9020066936C /* MatchTableHeaderView.swift in Sources */,
 				5563C4852566D8AB0009AF4D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
