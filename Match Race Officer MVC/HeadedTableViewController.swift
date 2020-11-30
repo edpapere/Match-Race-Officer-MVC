@@ -87,6 +87,8 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
 */
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        tableView.separatorInset.left = 0
+        
     }
     
     
