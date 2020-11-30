@@ -86,6 +86,15 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.contentInset = UIEdgeInsets(top: height2, left: 0, bottom: 20, right: 0)
 */
+        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+    }
+    
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableView.reloadData()
+        
     }
     
     
@@ -103,12 +112,47 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.flights[section].matches.count
     }
-    
+    /*
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
         cell.textLabel?.text = "Match \(indexPath.row+1)"
         cell.detailTextLabel?.text = nil
         
+        return cell
+    }
+    */
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FlightTableViewCell
+
+        // Configure the cell...
+        let match = array.flights[indexPath.section].matches[indexPath.row]
+        
+        
+        var portJustChanged = false
+        var stbdJustChanged = false
+        
+        if indexPath.section > 0 {
+            for previous in array.flights[indexPath.section-1].matches {
+                portJustChanged =
+                    portJustChanged ||
+                    ( match.portSideBoat == previous.portSideBoat && match.portSideTeam != previous.portSideTeam ) ||
+                    ( match.portSideBoat == previous.stbdSideBoat && match.portSideTeam != previous.stbdSideTeam )
+                stbdJustChanged =
+                    stbdJustChanged ||
+                    ( match.stbdSideBoat == previous.portSideBoat && match.stbdSideTeam != previous.portSideTeam ) ||
+                    ( match.stbdSideBoat == previous.stbdSideBoat && match.stbdSideTeam != previous.stbdSideTeam )
+            }
+        }
+        
+        cell.update(with: match, as: indexPath.row, markPort: portJustChanged, markStbd: stbdJustChanged)
+
+        //textFieldCell.layer.borderColor = UIColor.orange.cgColor
+        //cell.layer.borderColor = UIColor.orange.cgColor
+        //cell.layer.borderWidth = 2
+        
+      
         return cell
     }
     

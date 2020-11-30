@@ -109,19 +109,19 @@ class EventStageTableViewController: UITableViewController {
 //        stackView.addArrangedSubview(labelMatch)
 //        stackView.bounds = CGRect(x: 0, y: 0, width: 100, height: 50)
 //        view.addSubview(stackView)
-        
+  
+/*
         let cell = tableView.dequeueReusableCell(withIdentifier: "flightTableViewHeaderView") as! FlightTableViewCell
         cell.update(title: "Header")
-        // cell.contentView.bounds = CGRect(x: 0, y: 0, width: 100, height: 50)
         cell.contentView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
         cell.contentView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-        cell.contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+       // cell.contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         
         view.addSubview(cell.contentView)
-        //view.ad
+       
         
-         tableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 20, right: 0)
-        
+        tableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 20, right: 0)
+*/
         
     }
 
