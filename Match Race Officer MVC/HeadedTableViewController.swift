@@ -33,7 +33,7 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - Properties
     
-    var array = RoundRobin6S6B // Finals // RoundRobin6S6B
+    var array = Finals // RoundRobin6S6B // Finals // RoundRobin6S6B
     
     
     // MARK: - Methods
@@ -53,6 +53,8 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
 
 //        let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         
+        //print(headerView.intrinsicContentSize)
+        //print(headerView.stbdTeam.superview!.intrinsicContentSize)
         let rect = headerView.stbdTeam.superview!.frame
         for con in headerView.constraints {
             if con.identifier == "headerHeight" {
@@ -88,6 +90,8 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         tableView.separatorInset.left = 0
+        
+        self.navigationItem.title = array.name
         
     }
     
@@ -147,8 +151,11 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         
-        cell.update(with: match, as: indexPath.row, markPort: portJustChanged, markStbd: stbdJustChanged)
+        // cell.update(with: match, as: indexPath.row, markPort: portJustChanged, markStbd: stbdJustChanged)
 
+        cell.update(with: array, indexPath: indexPath) //, markBoatChanges: true
+
+        
         //textFieldCell.layer.borderColor = UIColor.orange.cgColor
         //cell.layer.borderColor = UIColor.orange.cgColor
         //cell.layer.borderWidth = 2

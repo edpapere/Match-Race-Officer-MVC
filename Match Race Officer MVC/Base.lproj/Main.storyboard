@@ -1204,6 +1204,7 @@ is not implemented yet</string>
                     <navigationItem key="navigationItem" title="W" id="cbe-h0-hO0"/>
                     <connections>
                         <outlet property="headerView" destination="h7i-Za-wem" id="pIg-Rv-sS0"/>
+                        <outlet property="navigationItem" destination="cbe-h0-hO0" id="uM3-Qv-wKF"/>
                         <outlet property="tableView" destination="JYO-L7-tId" id="HOd-Gv-thp"/>
                     </connections>
                 </viewController>
