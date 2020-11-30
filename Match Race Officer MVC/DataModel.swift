@@ -128,6 +128,14 @@ struct EventStage {
         }
         return -1
     }
+    func boat(indexPath path: IndexPath, side: MatchSide) -> Boat? {
+        let boatIndex = self.boatIndex(indexPath: path,side: side)
+        return (boatIndex >= 0 && boatIndex < boats.count ) ? boats[boatIndex] : nil
+    }
+    func team(indexPath path: IndexPath, side: MatchSide) -> Team? {
+        let teamIndex = self.teamIndex(indexPath: path,side: side)
+        return (teamIndex >= 0 && teamIndex < teams.count ) ? teams[teamIndex] : nil
+    }
     func boatShortName(indexPath path: IndexPath, side: MatchSide) -> String {
         let boatIndex = self.boatIndex(indexPath: path,side: side)
         if boatIndex < 0 {
@@ -135,6 +143,14 @@ struct EventStage {
         }
         let boat = (boatIndex < boats.count) ? boats[boatIndex] : nil
         return boat?.shortName ?? "B\(boatIndex+1)"
+    }
+    func boatName(indexPath path: IndexPath, side: MatchSide) -> String {
+        let boatIndex = self.boatIndex(indexPath: path,side: side)
+        if boatIndex < 0 {
+            return ""
+        }
+        let boat = (boatIndex < boats.count) ? boats[boatIndex] : nil
+        return boat?.boatName ?? "Boat \(boatIndex+1)"
     }
     func teamName(indexPath path: IndexPath, side: MatchSide) -> String {
         let teamIndex = self.teamIndex(indexPath: path, side: side)
@@ -150,11 +166,8 @@ struct EventStage {
     }
     
     func skipperHasChangedTheBoat(in match: Match, after flight: Flight) -> (Bool,Bool) {
-    
         var portJustChanged = false
         var stbdJustChanged = false
-    
-        
         for previous in flight.matches {
             portJustChanged =
                 portJustChanged ||
@@ -259,10 +272,10 @@ let Finals = EventStage(
         )
     ],
     teams: [
-        nil,
+        Team(teamId: 1, boatId: nil, noc: nil, teamName: "Nikolaev", gender: nil, crew: []),
         Team(teamId: 1, boatId: nil, noc: nil, teamName: "Shapovalov", gender: nil, crew: []),
-        nil,
-        nil
+        Team(teamId: 1, boatId: nil, noc: nil, teamName: "Olontsev", gender: nil, crew: []),
+        Team(teamId: 1, boatId: nil, noc: nil, teamName: "Evtikhov", gender: nil, crew: [])
     ],
     boats: [
         Boat(shortName: "A", boatName: "Alpha"),
