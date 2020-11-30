@@ -5,17 +5,14 @@
 //  Created by Andrey Pereslavtsev on 29.11.2020.
 //
 // ------------------------------------------------------------------------
-// Based on TableView Stretchy Header by Mitchell Hudson
+// Based on:
+// Make A View Using .xib file Xcode 10 2019 Guide
+// https://blog.usejournal.com/make-views-using-xib-45219ead24
+//
+// Tried to implement basing on "TableView Stretchy Header" by Mitchell Hudson but failed :(
 // https://www.youtube.com/playlist?list=PLoN_ejT35AEjgjfIAd0BZbuDbjY68daAy
 //
-// 03 TableView Content Insets
-// https://www.youtube.com/watch?v=I0hC2nmpAsw
-//
-// 04 UIImageView Setup
-// https://www.youtube.com/watch?v=4bNaJcmT2HY
-//
-// 05 ScrollView didscroll and resizing image view
-// https://www.youtube.com/watch?v=yBOxtJfHLL4
+
 
 import UIKit
 
