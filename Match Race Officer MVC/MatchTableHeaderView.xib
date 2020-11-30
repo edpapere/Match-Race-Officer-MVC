@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchTableHeaderView" customModule="Match_Race_Officer_MVC" customModuleProvider="target">
             <connections>
-                <outlet property="headerTitleLabel2" destination="TGy-Hs-fto" id="eas-wj-TOV"/>
                 <outlet property="matchNum" destination="yHh-Ew-H3D" id="DUW-i6-6dN"/>
                 <outlet property="portBoat" destination="6Y0-ms-LnY" id="E3h-Mt-fbS"/>
                 <outlet property="portTeam" destination="HBi-8t-G1U" id="jcv-Fr-7my"/>
@@ -21,17 +20,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="432" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="432" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-Hs-fto">
-                    <rect key="frame" x="10" y="10" width="422" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="pp3-os-I09">
-                    <rect key="frame" x="0.0" y="30.5" width="432" height="20.5"/>
+                    <rect key="frame" x="0.0" y="44" width="432" height="20.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHh-Ew-H3D">
                             <rect key="frame" x="0.0" y="0.0" width="27.5" height="20.5"/>
@@ -78,14 +71,11 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="pp3-os-I09" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="95o-tw-iQA"/>
-                <constraint firstItem="pp3-os-I09" firstAttribute="top" secondItem="TGy-Hs-fto" secondAttribute="bottom" id="Irw-9h-GmA"/>
                 <constraint firstItem="pp3-os-I09" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="JW7-J1-8e5"/>
-                <constraint firstItem="TGy-Hs-fto" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="hsb-LS-Ckg"/>
-                <constraint firstItem="TGy-Hs-fto" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="lOw-zt-hVA"/>
-                <constraint firstItem="TGy-Hs-fto" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="zhe-U6-onS"/>
+                <constraint firstItem="pp3-os-I09" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="wPN-77-Zib"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="131.8840579710145" y="-579.91071428571422"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-559.82142857142856"/>
         </view>
     </objects>
     <resources>

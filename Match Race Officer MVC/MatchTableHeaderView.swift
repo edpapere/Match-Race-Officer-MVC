@@ -12,7 +12,6 @@ class MatchTableHeaderView: UIView {
     
     // MARK: - IB Outlets
     
-    @IBOutlet weak var headerTitleLabel2: UILabel!
     @IBOutlet weak var matchNum: UILabel!
     @IBOutlet weak var portBoat: UILabel!
     @IBOutlet weak var portTeam: UILabel!

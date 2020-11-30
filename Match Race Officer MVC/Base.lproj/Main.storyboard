@@ -794,7 +794,7 @@ is not implemented yet</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYD-VA-439" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-772" y="2314"/>
+            <point key="canvasLocation" x="-772.46376811594212" y="2313.5869565217395"/>
         </scene>
         <!--Format-->
         <scene sceneID="q6B-k0-hZx">

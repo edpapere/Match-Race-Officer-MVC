@@ -46,7 +46,6 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         //headerView.isHeader = true
         headerView.setTextOfColumns(match: "Match", portBoat: "Boat", portTeam: "Blue", stbdBoat: "Boat", stbdTeam: "Yellow")
-        headerView.headerTitleLabel2.text = "Header"
         
       
 //        headerView.setNeedsLayout()
@@ -57,7 +56,7 @@ class HeadedTableViewController: UIViewController, UITableViewDelegate, UITableV
         let rect = headerView.stbdTeam.superview!.frame
         for con in headerView.constraints {
             if con.identifier == "headerHeight" {
-                con.constant = rect.maxY
+                con.constant = rect.height // maxY
                 print(#line,con.constant)
             }
         }
