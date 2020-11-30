@@ -110,6 +110,40 @@ class FlightTableViewCell: UITableViewCell {
     
     }
 
+    func update(with eventStage: EventStage, indexPath: IndexPath, markBoatChanges: Bool = false) {
+
+        var greyColor = UIColor.m_grey
+        var blueColor = UIColor.m_blue
+        var yellColor = UIColor.m_yellow
+                
+        if #available(iOS 12.0, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                greyColor = UIColor.m_grey4dark
+                blueColor = UIColor.m_blue4dark
+                yellColor = UIColor.m_yellow4dark
+            }
+        }
+        
+        matchNumberLabel.text = "\(indexPath.row+1)"
+        portSideBoatLabel.text = eventStage.boatShortName(indexPath: indexPath, side: .portSide)
+        stbdSideBoatLabel.text = eventStage.boatShortName(indexPath: indexPath, side: .stbdSide)
+        portSideTeamLabel.text = eventStage.teamName(indexPath: indexPath, side: .portSide)
+        stbdSideTeamLabel.text = eventStage.teamName(indexPath: indexPath, side: .stbdSide)
+        
+        portSideBoatLabel.backgroundColor = blueColor
+        stbdSideBoatLabel.backgroundColor = yellColor
+        
+        if eventStage.markBoatChanges {
+            let ( markPort, markStbd ) = eventStage.skipperHasChangedTheBoat(indexPath: indexPath)
+            portSideTeamLabel.backgroundColor = markPort ? greyColor : nil
+            stbdSideTeamLabel.backgroundColor = markStbd ? greyColor : nil
+        } else {
+            portSideTeamLabel.backgroundColor = nil
+            stbdSideTeamLabel.backgroundColor = nil
+        }
+    
+    }
+
     
     func update(title: String) {
 
