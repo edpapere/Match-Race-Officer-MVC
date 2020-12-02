@@ -22,6 +22,7 @@
 		5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4982566E0CD0009AF4D /* DataModel.swift */; };
 		5563C49C2567034C0009AF4D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49B2567034C0009AF4D /* Person.swift */; };
 		5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49E2567105D0009AF4D /* PersonTableViewController.swift */; };
+		5595691F2578484B003A0A12 /* StageFormatSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595691E2578484B003A0A12 /* StageFormatSelectionViewController.swift */; };
 		55D2F8DE2573DE0F0066936C /* HeadedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */; };
 		55D2F8E12573F0BB0066936C /* MatchTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */; };
 		55D2F8E42573F9020066936C /* MatchTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */; };
@@ -48,6 +49,7 @@
 		5563C4982566E0CD0009AF4D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		5563C49B2567034C0009AF4D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		5563C49E2567105D0009AF4D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		5595691E2578484B003A0A12 /* StageFormatSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFormatSelectionViewController.swift; sourceTree = "<group>"; };
 		55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadedTableViewController.swift; sourceTree = "<group>"; };
 		55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchTableHeaderView.xib; sourceTree = "<group>"; };
 		55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableHeaderView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				5563C4842566D8AB0009AF4D /* SceneDelegate.swift */,
 				5563C4862566D8AB0009AF4D /* ViewController.swift */,
 				5563C4882566D8AB0009AF4D /* Main.storyboard */,
+				5595691E2578484B003A0A12 /* StageFormatSelectionViewController.swift */,
 				5563C49E2567105D0009AF4D /* PersonTableViewController.swift */,
 				5563C48B2566D8AF0009AF4D /* Assets.xcassets */,
 				5563C48D2566D8AF0009AF4D /* LaunchScreen.storyboard */,
@@ -208,6 +211,7 @@
 				5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */,
 				552F804B256AF4970020567D /* EventStageTableViewController.swift in Sources */,
 				552F80452569805C0020567D /* Boat.swift in Sources */,
+				5595691F2578484B003A0A12 /* StageFormatSelectionViewController.swift in Sources */,
 				5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */,
 				55D2F8E72574407A0066936C /* constants.swift in Sources */,
 				552F803E256860F40020567D /* AddEditPersonTableViewController.swift in Sources */,
