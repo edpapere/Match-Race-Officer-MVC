@@ -45,12 +45,32 @@ class StageFormatSelectionViewController: UIViewController, UITableViewDelegate,
         "6S-6B-1RR One Round-Robin"
     ]
     
+    var numSkippers: Int = 0 {
+        didSet {
+            numSkippersIndicatorTextField.text = "\(numSkippers)"
+            numSkippersStepper.value = Double(numSkippers)
+        }
+    }
+    
+    var numBoats: Int = 0 {
+        didSet {
+            numBoatsIndicatorTextField.text = "\(numBoats)"
+            numBoatsStepper.value = Double(numBoats)
+        }
+    }
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        
+        numSkippers = 6
+        numBoats = 6
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,4 +93,13 @@ class StageFormatSelectionViewController: UIViewController, UITableViewDelegate,
     }
     */
 
+
+    @IBAction func numSkippersStepperChanged(_ sender: UIStepper) {
+        numSkippers = Int(sender.value)
+    }
+    
+    @IBAction func numBoatsStepperChanged(_ sender: UIStepper) {
+        numBoats = Int(sender.value)
+    }
+    
 }
