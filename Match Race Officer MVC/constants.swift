@@ -16,6 +16,58 @@ extension UIColor {
     static let m_yellow4dark    = UIColor(hue: 0.130, saturation: 1.000, brightness: 1.000, alpha: 0.700)
 }
 
+/*
+
+extension String {
+    func htmlAttributedString(size: CGFloat, color: UIColor) -> NSAttributedString? {
+//        let c = color.hexString
+//        let clr = c != nil ? "color: \(c!);" : ""
+        let htmlTemplate = """
+        <!doctype html>
+        <html>
+          <head>
+            <style>
+              body {
+                color: -apple-label;
+                font-family: -apple-system;
+                font-size: \(size)px;
+              }
+            </style>
+          </head>
+          <body>
+            \(self)
+          </body>
+        </html>
+        """
+
+        guard let data = htmlTemplate.data(using: .utf8) else {
+            return NSAttributedString(string: self)
+        }
+
+        guard let attributedString = try? NSAttributedString(
+            data: data,
+            options: [.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil
+        ) else {
+            return NSAttributedString(string: self)
+        }
+        return attributedString
+    }
+}
+
+extension UIColor {
+    var hexString:String? {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        if getRed(&r, green: &g, blue: &b, alpha: nil) {
+            return  String(format: "#%02x%02x%02x", (Int)(r * 255), (Int)(g * 255), (Int)(b * 255))
+        }
+        return nil
+    }
+}
+
+*/
 
     /*
     let grey4light     = UIColor(hue: 0.000, saturation: 0.000, brightness: 0.200, alpha: 0.100)
