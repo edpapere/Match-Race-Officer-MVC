@@ -18,38 +18,66 @@ class StageFormatSelectionViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var tableView: UITableView!
     
     var stageFormats = [
-        "4S-4B *Finals* (2 & 3 points)",
-        "4S-4B *Semi Finals* (3 points)",
-        "4S-4B *Sail Offs* (1 point)",
-        "*6S-6B-1RR* One Round Robin",
-        "*6S-6B-1RR* 2nd Round Robin",
-        "*8S-8B-1RR* One Round Robin",
-        "*8S-8B-1RR* 2nd Round Robin",
-        "*9S-4B-1RR* One Round Robin",
-        "*9S-4B-1RR* 2nd Round Robin",
-        "*9S-6B-1RR* One Round Robin",
-        "*9S-6B-1RR* 2nd Round Robin",
-        "0",
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "18",
-        "19",
-        "20"
+        StageFormat(
+            title: "4S-4B *Finals* (2 & 3 points)",
+            description: "Petit Final 2pts., Grand Final 3pts.",
+            numSkippers: 4,
+            numBoats: 4,
+            flights: []
+        ),
+        StageFormat(
+            title: "4S-4B *Semi Finals* (3 points)",
+            description: "",
+            numSkippers: 4,
+            numBoats: 4,
+            flights: []
+        ),
+        StageFormat(
+            title: "4S-4B *Sail Offs* (1 point)",
+            description: "",
+            numSkippers: 4,
+            numBoats: 4,
+            flights: []
+        ),
+        StageFormat(
+            title: "*6S-6B-1RR* One Round Robin",
+            description: "Single or 1st RR",
+            numSkippers: 6,
+            numBoats: 6,
+            flights: []
+        ),
+        StageFormat(
+            title: "*6S-6B-1RR* 2nd Round Robin",
+            description: "2nd RR: swapped sides",
+            numSkippers: 6,
+            numBoats: 6,
+            flights: []
+        ),
+        StageFormat(title: "*8S-8B-1RR* One Round Robin"),
+        StageFormat(title: "*8S-8B-1RR* 2nd Round Robin"),
+        StageFormat(title: "*9S-4B-1RR* One Round Robin"),
+        StageFormat(title: "*9S-4B-1RR* 2nd Round Robin"),
+        StageFormat(title: "*9S-6B-1RR* One Round Robin"),
+        StageFormat(title: "*9S-6B-1RR* 2nd Round Robin"),
+        StageFormat(title: "*01*"),
+        StageFormat(title: "*02*"),
+        StageFormat(title: "*03*"),
+        StageFormat(title: "*04*"),
+        StageFormat(title: "*05*"),
+        StageFormat(title: "*06*"),
+        StageFormat(title: "*07*"),
+        StageFormat(title: "*08*"),
+        StageFormat(title: "*09*"),
+        StageFormat(title: "*10*"),
+        StageFormat(title: "*11*"),
+        StageFormat(title: "*12*"),
+        StageFormat(title: "*13*"),
+        StageFormat(title: "*14*"),
+        StageFormat(title: "*15*"),
+        StageFormat(title: "*16*"),
+        StageFormat(title: "*17*"),
+        StageFormat(title: "*18*"),
+        StageFormat(title: "*19*")
     ]
     
     var numSkippers: Int = 0 {
@@ -96,8 +124,14 @@ class StageFormatSelectionViewController: UIViewController, UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableFormatCell", for: indexPath)
         
+        let format = stageFormats[indexPath.row]
         
-        let title = stageFormats[indexPath.row]
+        #if DEBUG
+        print("Format description: \(format.desription)")
+        #endif
+        cell.detailTextLabel?.text = format.desription
+        
+        let title = format.title
         
         if let textLabel = cell.textLabel {
             
@@ -124,6 +158,7 @@ class StageFormatSelectionViewController: UIViewController, UITableViewDelegate,
             textLabel.text = title
         }
         
+       
         
 //        let principalText = stageFormats[indexPath.row]
 //

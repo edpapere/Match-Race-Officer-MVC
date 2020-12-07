@@ -13,6 +13,7 @@
 		552F8048256A9A5C0020567D /* AddEditBoatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */; };
 		552F804B256AF4970020567D /* EventStageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F804A256AF4970020567D /* EventStageTableViewController.swift */; };
 		552F804E256B09EC0020567D /* FlightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F804D256B09EC0020567D /* FlightTableViewCell.swift */; };
+		554EEDA5257ED97800F36AED /* SkipperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554EEDA4257ED97800F36AED /* SkipperTableViewController.swift */; };
 		5563C4832566D8AB0009AF4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4822566D8AB0009AF4D /* AppDelegate.swift */; };
 		5563C4852566D8AB0009AF4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4842566D8AB0009AF4D /* SceneDelegate.swift */; };
 		5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C4862566D8AB0009AF4D /* ViewController.swift */; };
@@ -23,6 +24,11 @@
 		5563C49C2567034C0009AF4D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49B2567034C0009AF4D /* Person.swift */; };
 		5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563C49E2567105D0009AF4D /* PersonTableViewController.swift */; };
 		5595691F2578484B003A0A12 /* StageFormatSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595691E2578484B003A0A12 /* StageFormatSelectionViewController.swift */; };
+		55956923257B009E003A0A12 /* EditEventInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55956922257B009E003A0A12 /* EditEventInfoTableViewController.swift */; };
+		5595692D257E97EB003A0A12 /* StageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595692C257E97EB003A0A12 /* StageFormat.swift */; };
+		55956931257EB6BA003A0A12 /* AddEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55956930257EB6BA003A0A12 /* AddEventTableViewController.swift */; };
+		55956939257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55956938257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift */; };
+		5595693D257ECA5A003A0A12 /* Skipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595693C257ECA5A003A0A12 /* Skipper.swift */; };
 		55D2F8DE2573DE0F0066936C /* HeadedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */; };
 		55D2F8E12573F0BB0066936C /* MatchTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */; };
 		55D2F8E42573F9020066936C /* MatchTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */; };
@@ -38,6 +44,7 @@
 		552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditBoatTableViewController.swift; sourceTree = "<group>"; };
 		552F804A256AF4970020567D /* EventStageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStageTableViewController.swift; sourceTree = "<group>"; };
 		552F804D256B09EC0020567D /* FlightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTableViewCell.swift; sourceTree = "<group>"; };
+		554EEDA4257ED97800F36AED /* SkipperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipperTableViewController.swift; sourceTree = "<group>"; };
 		5563C47F2566D8AB0009AF4D /* Match Race Officer MVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Match Race Officer MVC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5563C4822566D8AB0009AF4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5563C4842566D8AB0009AF4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +57,11 @@
 		5563C49B2567034C0009AF4D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		5563C49E2567105D0009AF4D /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		5595691E2578484B003A0A12 /* StageFormatSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFormatSelectionViewController.swift; sourceTree = "<group>"; };
+		55956922257B009E003A0A12 /* EditEventInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventInfoTableViewController.swift; sourceTree = "<group>"; };
+		5595692C257E97EB003A0A12 /* StageFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageFormat.swift; sourceTree = "<group>"; };
+		55956930257EB6BA003A0A12 /* AddEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewController.swift; sourceTree = "<group>"; };
+		55956938257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditSkipperTableViewController.swift; sourceTree = "<group>"; };
+		5595693C257ECA5A003A0A12 /* Skipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skipper.swift; sourceTree = "<group>"; };
 		55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadedTableViewController.swift; sourceTree = "<group>"; };
 		55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchTableHeaderView.xib; sourceTree = "<group>"; };
 		55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableHeaderView.swift; sourceTree = "<group>"; };
@@ -88,6 +100,9 @@
 		5563C4812566D8AB0009AF4D /* Match Race Officer MVC */ = {
 			isa = PBXGroup;
 			children = (
+				5595692B257E97D0003A0A12 /* Models */,
+				55956929257D38B2003A0A12 /* Views */,
+				55956925257B00AD003A0A12 /* Controllers */,
 				55D2F8DD2573DE0F0066936C /* HeadedTableViewController.swift */,
 				55FD44B2256D35EE00BE88A6 /* Graphic Assets */,
 				5563C4822566D8AB0009AF4D /* AppDelegate.swift */,
@@ -100,18 +115,45 @@
 				5563C48D2566D8AF0009AF4D /* LaunchScreen.storyboard */,
 				5563C4902566D8AF0009AF4D /* Info.plist */,
 				5563C4982566E0CD0009AF4D /* DataModel.swift */,
-				5563C49B2567034C0009AF4D /* Person.swift */,
 				552F803D256860F40020567D /* AddEditPersonTableViewController.swift */,
 				552F804125697FDD0020567D /* BoatTableViewController.swift */,
 				552F80442569805C0020567D /* Boat.swift */,
 				552F8047256A9A5C0020567D /* AddEditBoatTableViewController.swift */,
 				552F804A256AF4970020567D /* EventStageTableViewController.swift */,
 				552F804D256B09EC0020567D /* FlightTableViewCell.swift */,
-				55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */,
-				55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */,
 				55D2F8E62574407A0066936C /* constants.swift */,
 			);
 			path = "Match Race Officer MVC";
+			sourceTree = "<group>";
+		};
+		55956925257B00AD003A0A12 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				55956930257EB6BA003A0A12 /* AddEventTableViewController.swift */,
+				55956922257B009E003A0A12 /* EditEventInfoTableViewController.swift */,
+				55956938257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift */,
+				554EEDA4257ED97800F36AED /* SkipperTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		55956929257D38B2003A0A12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				55D2F8E02573F0BB0066936C /* MatchTableHeaderView.xib */,
+				55D2F8E32573F9020066936C /* MatchTableHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5595692B257E97D0003A0A12 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5595692C257E97EB003A0A12 /* StageFormat.swift */,
+				5563C49B2567034C0009AF4D /* Person.swift */,
+				5595693C257ECA5A003A0A12 /* Skipper.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		55FD44B2256D35EE00BE88A6 /* Graphic Assets */ = {
@@ -208,17 +250,23 @@
 				552F804E256B09EC0020567D /* FlightTableViewCell.swift in Sources */,
 				55D2F8DE2573DE0F0066936C /* HeadedTableViewController.swift in Sources */,
 				5563C4872566D8AB0009AF4D /* ViewController.swift in Sources */,
+				554EEDA5257ED97800F36AED /* SkipperTableViewController.swift in Sources */,
 				5563C49F2567105D0009AF4D /* PersonTableViewController.swift in Sources */,
+				5595692D257E97EB003A0A12 /* StageFormat.swift in Sources */,
 				552F804B256AF4970020567D /* EventStageTableViewController.swift in Sources */,
 				552F80452569805C0020567D /* Boat.swift in Sources */,
 				5595691F2578484B003A0A12 /* StageFormatSelectionViewController.swift in Sources */,
 				5563C4992566E0CD0009AF4D /* DataModel.swift in Sources */,
 				55D2F8E72574407A0066936C /* constants.swift in Sources */,
 				552F803E256860F40020567D /* AddEditPersonTableViewController.swift in Sources */,
+				55956931257EB6BA003A0A12 /* AddEventTableViewController.swift in Sources */,
 				552F804225697FDD0020567D /* BoatTableViewController.swift in Sources */,
 				552F8048256A9A5C0020567D /* AddEditBoatTableViewController.swift in Sources */,
 				5563C4832566D8AB0009AF4D /* AppDelegate.swift in Sources */,
 				55D2F8E42573F9020066936C /* MatchTableHeaderView.swift in Sources */,
+				55956923257B009E003A0A12 /* EditEventInfoTableViewController.swift in Sources */,
+				5595693D257ECA5A003A0A12 /* Skipper.swift in Sources */,
+				55956939257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift in Sources */,
 				5563C4852566D8AB0009AF4D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
