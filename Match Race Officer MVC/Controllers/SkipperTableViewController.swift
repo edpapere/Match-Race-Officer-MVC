@@ -24,24 +24,7 @@ class SkipperTableViewController: UITableViewController {
     var delegate: SkipperTableViewControllerDelegate?
     
     var skippers: [Skipper] = []
-//        = [
-//        Skipper( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
-//        Skipper( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
-//        Skipper( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
-//        Skipper( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
-//        Skipper( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
-//        Skipper( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
-//        Skipper( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
-//        Skipper( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
-//        Skipper( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
-//        Skipper( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
-//        Skipper( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
-//        Skipper( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
-//        Skipper( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
-//        Skipper( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
-//        Skipper( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
-//        Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
-//    ]
+
   
     // MARK: - Methods
     
@@ -125,15 +108,7 @@ class SkipperTableViewController: UITableViewController {
     }
     */
     
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        if let skipper = delegate?.removeSkipper(at: sourceIndexPath.row) {
-            delegate?.insertSkipper(skipper, at: destinationIndexPath.row)
-        } else {
-            let movedPerson = skippers.remove(at: sourceIndexPath.row)
-            skippers.insert(movedPerson, at: destinationIndexPath.row)
-        }
-        tableView.reloadData()
-    }
+
 
     /*
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -167,13 +142,17 @@ class SkipperTableViewController: UITableViewController {
     }
   
 
-    /*
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if let skipper = delegate?.removeSkipper(at: sourceIndexPath.row) {
+            delegate?.insertSkipper(skipper, at: destinationIndexPath.row)
+        } else {
+            let movedPerson = skippers.remove(at: sourceIndexPath.row)
+            skippers.insert(movedPerson, at: destinationIndexPath.row)
+        }
+        tableView.reloadData()
     }
-    */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -186,9 +165,9 @@ class SkipperTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        #if DEBUG
-        print(#line,#function,"\(segue.identifier)")
-        #endif
+//        #if DEBUG
+//        print(#line,#function,"\(segue.identifier)")
+//        #endif
         if segue.identifier == "EditSkipper" {
             let indexPath = tableView.indexPathForSelectedRow!
             //let skipper = skippers[indexPath.row]

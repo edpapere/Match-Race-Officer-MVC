@@ -1499,7 +1499,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="0tP-G5-bmc" kind="show" id="zhz-kG-pSF"/>
+                                            <segue destination="0tP-G5-bmc" kind="show" identifier="EditBoatList" id="zhz-kG-pSF"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

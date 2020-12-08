@@ -9,14 +9,7 @@ import UIKit
 
 class BoatTableViewController: UITableViewController {
     
-    var boats: [Boat] = [
-        Boat( ifBoatId: "", boatName: "Alpha", shortName: "111", sailNumber: "RUS111", isSpare: false),
-        Boat( ifBoatId: "", boatName: "Bravo", shortName: "888", sailNumber: "RUS888", isSpare: false),
-        Boat(shortName: "I", boatName: "India"),
-        Boat(shortName: "F", boatName: "Foxtrot")
-        
-    ]
-  
+    var boats = ItemCollection<Boat>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +19,14 @@ class BoatTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
     }
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditBoat" {
             let indexPath = tableView.indexPathForSelectedRow!
-            let boat = boats[indexPath.row]
+            let boat = boats.access(at: indexPath.row)
             let navController = segue.destination as! UINavigationController
             let addEditBoatTableViewController = navController.topViewController as! AddEditBoatTableViewController
             addEditBoatTableViewController.boat = boat
@@ -63,7 +57,7 @@ class BoatTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "boatReuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        let boat = boats[indexPath.row]
+        let boat = boats.access(at: indexPath.row)
         
         cell.textLabel?.text = "\(boat.shortName)  \(boat.boatName)"
         cell.detailTextLabel?.text = "(\(boat.boatId))  \(boat.sailNumber)"
@@ -80,24 +74,25 @@ class BoatTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            print(#function, "remove \(indexPath.row)")
+            boats.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
-    /*
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let boat = boats.remove(at: sourceIndexPath.row)
+        boats.insert(boat, at: destinationIndexPath.row)
+        tableView.reloadData()
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -126,7 +121,7 @@ class BoatTableViewController: UITableViewController {
         
         if let boat = sourceViewController.boat {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                boats[selectedIndexPath.row] = boat
+                boats.update(at: selectedIndexPath.row, with: boat)
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
             } else {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Boat {
+class Boat: Equatable {
     fileprivate static var nextId: BoatID = 1
     
     var boatId: BoatID
@@ -87,4 +87,16 @@ class Boat {
             !shortName.isEmpty
         return isDefined
     }
+    
+    // Equatable
+    static func == (lhs: Boat, rhs: Boat) -> Bool {
+        let isEqual =
+            lhs.ifBoatId.isEqual(rhs.ifBoatId) &&
+            lhs.boatName.isEqual(rhs.boatName) &&
+            lhs.shortName.isEqual(rhs.shortName) &&
+            lhs.sailNumber.isEqual(rhs.sailNumber) &&
+            lhs.isSpare == rhs.isSpare
+        return isEqual
+    }
+    
 }
