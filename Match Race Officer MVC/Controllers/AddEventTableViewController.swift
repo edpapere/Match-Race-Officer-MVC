@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddEventTableViewController: UITableViewController, SkipperTableViewControllerDelegate, ItemCollectionDelegate {
+class AddEventTableViewController: UITableViewController, ItemCollectionDelegate {
 
     
   
@@ -24,25 +24,26 @@ class AddEventTableViewController: UITableViewController, SkipperTableViewContro
     // MARK: - Properties
     
     
-    var skippers: [Skipper] = [
-        Skipper( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
-        Skipper( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
-        Skipper( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
-        Skipper( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
-        Skipper( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
-        Skipper( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
-        Skipper( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
-        Skipper( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
-        Skipper( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
-        Skipper( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
-        Skipper( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
-        Skipper( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
-        Skipper( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
-        Skipper( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
-        Skipper( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
-        Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
-    ]
+//    var skippers: [Skipper] = [
+//        Skipper( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
+//        Skipper( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
+//        Skipper( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
+//        Skipper( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
+//        Skipper( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
+//        Skipper( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
+//        Skipper( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
+//        Skipper( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
+//        Skipper( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
+//        Skipper( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
+//        Skipper( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
+//        Skipper( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
+//        Skipper( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
+//        Skipper( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
+//        Skipper( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
+//        Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
+//    ]
     
+    var skippers = ItemCollection<Skipper>()
     var boats = ItemCollection<Boat>()
     
   
@@ -59,7 +60,28 @@ class AddEventTableViewController: UITableViewController, SkipperTableViewContro
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        
+        skippers.assign(
+            [
+                Skipper( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
+                Skipper( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
+                Skipper( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
+                Skipper( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
+                Skipper( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
+                Skipper( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
+                Skipper( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
+                Skipper( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
+                Skipper( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
+                Skipper( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
+                Skipper( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
+                Skipper( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
+                Skipper( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
+                Skipper( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
+                Skipper( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
+                Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
+            ]
+        )
+        skippers.delegate = self
+        skippers.identifier = "SkipperCollection"
         
         boats.assign(
             [
@@ -70,7 +92,7 @@ class AddEventTableViewController: UITableViewController, SkipperTableViewContro
             ]
         )
         boats.delegate = self
-        boats.identifier = "BoatsCollection"
+        boats.identifier = "BoatCollection"
         
         
         updateLabels()
@@ -181,39 +203,7 @@ class AddEventTableViewController: UITableViewController, SkipperTableViewContro
     }
     
     
-    // MARK: - Skipper Table View Delegate
-    
-    func updateSkipper(at index: Int, with skipper: Skipper) {
-        self.skippers[index] = skipper
-        updateLabels()
-    }
-    func appendSkipper(_ skipper: Skipper){
-        self.skippers.append(skipper)
-        updateLabels()
-    }
-    @discardableResult func removeSkipper(at index: Int) -> Skipper {
-        print(#function, "remove \(index)")
-        let skipper = self.skippers.remove(at: index)
-        updateLabels()
-        return skipper
-    }
-    func insertSkipper(_ skipper: Skipper, at index: Int) {
-        self.skippers.insert(skipper, at: index)
-        updateLabels()
-    }
-    
-    func returnSkipper(at index: Int) -> Skipper {
-        return skippers[index]
-    }
-    
-    func replaceSkippers(_ skippers: [Skipper]) {
-        self.skippers = skippers
-        updateLabels()
-    }
-    
-    func countSkippers() -> Int {
-        skippers.count
-    }
+  
     
     
     // MARK: - Navigation
@@ -228,8 +218,7 @@ class AddEventTableViewController: UITableViewController, SkipperTableViewContro
             break
         case "EditSkipperList":
             let skipperTableViewController = segue.destination as? SkipperTableViewController
-         //   skipperTableViewController?.skippers = skippers
-            skipperTableViewController?.delegate = self
+            skipperTableViewController?.skippers = self.skippers
             break
         case "EditBoatList":
             let boatTableViewController = segue.destination as? BoatTableViewController
@@ -242,5 +231,15 @@ class AddEventTableViewController: UITableViewController, SkipperTableViewContro
     }
     
     
+    // MARK: - IB Actions
+    
+    @IBAction func unwindToAddEventTableViewController(_ unwindSegue: UIStoryboardSegue) {
+        
+        #if DEBUG
+        print(#line,#function,"\(unwindSegue.identifier ?? "<unknown segue>")")
+        #endif
+        
+    }
+  
     
 }

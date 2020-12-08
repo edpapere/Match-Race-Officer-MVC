@@ -7,24 +7,24 @@
 
 import UIKit
 
-protocol SkipperTableViewControllerDelegate {
-    func updateSkipper(at: Int, with: Skipper)
-    func appendSkipper(_: Skipper)
-    @discardableResult func removeSkipper(at: Int) -> Skipper
-    func insertSkipper(_: Skipper, at: Int)
-    func returnSkipper(at index: Int) -> Skipper
-    func replaceSkippers(_: [Skipper])
-    func countSkippers() -> Int
-}
+//protocol SkipperTableViewControllerDelegate {
+//    func updateSkipper(at: Int, with: Skipper)
+//    func appendSkipper(_: Skipper)
+//    @discardableResult func removeSkipper(at: Int) -> Skipper
+//    func insertSkipper(_: Skipper, at: Int)
+//    func returnSkipper(at index: Int) -> Skipper
+//    func replaceSkippers(_: [Skipper])
+//    func countSkippers() -> Int
+//}
 
 class SkipperTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var delegate: SkipperTableViewControllerDelegate?
+    //var delegate: SkipperTableViewControllerDelegate?
     
-    var skippers: [Skipper] = []
-
+    //var skippers: [Skipper] = []
+    var skippers = ItemCollection<Skipper>()
   
     // MARK: - Methods
     
@@ -58,11 +58,8 @@ class SkipperTableViewController: UITableViewController {
         #endif
         if section == 0 {
             #if DEBUG
-            print(#line,#function,"Number of persons: \(skippers.count)")
+            print(#line,#function,"Number of Skippers: \(skippers.count)")
             #endif
-            if let count = delegate?.countSkippers() {
-                return count
-            }
             return skippers.count
         }
         return 0
@@ -73,12 +70,7 @@ class SkipperTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
 
         // let skipper = skippers[indexPath.row]
-        var skipper: Skipper
-        if delegate != nil {
-            skipper = delegate!.returnSkipper(at: indexPath.row)
-        } else {
-            skipper = skippers[indexPath.row]
-        }
+        let skipper = skippers.access(at: indexPath.row)
         
         let personName = NSMutableAttributedString(string: "\(skipper.gender == .female ? "👩🏼" : "👦🏻") \(skipper.givenName)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.labelFontSize)])
         personName.append(NSAttributedString(string: " \(skipper.familyName)",attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)]))
@@ -130,11 +122,7 @@ class SkipperTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             print(#function, "remove \(indexPath.row)")
-            if  delegate != nil {
-                delegate!.removeSkipper(at:indexPath.row)
-            } else {
-                skippers.remove(at: indexPath.row)
-            }
+            skippers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -144,12 +132,8 @@ class SkipperTableViewController: UITableViewController {
 
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        if let skipper = delegate?.removeSkipper(at: sourceIndexPath.row) {
-            delegate?.insertSkipper(skipper, at: destinationIndexPath.row)
-        } else {
-            let movedPerson = skippers.remove(at: sourceIndexPath.row)
-            skippers.insert(movedPerson, at: destinationIndexPath.row)
-        }
+        let movedSkipper = skippers.remove(at: sourceIndexPath.row)
+        skippers.insert(movedSkipper, at: destinationIndexPath.row)
         tableView.reloadData()
     }
     
@@ -171,12 +155,7 @@ class SkipperTableViewController: UITableViewController {
         if segue.identifier == "EditSkipper" {
             let indexPath = tableView.indexPathForSelectedRow!
             //let skipper = skippers[indexPath.row]
-            var skipper: Skipper
-            if delegate != nil {
-                skipper = delegate!.returnSkipper(at: indexPath.row)
-            } else {
-                skipper = skippers[indexPath.row]
-            }
+            let skipper = skippers.access(at: indexPath.row)
             let navController = segue.destination as! UINavigationController
             let addEditSkipperTableViewController = navController.topViewController as! AddEditSkipperTableViewController
             addEditSkipperTableViewController.skipper = skipper
@@ -209,20 +188,13 @@ class SkipperTableViewController: UITableViewController {
         
         if let skipper = sourceViewController.skipper {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                if delegate != nil {
-                    delegate!.updateSkipper(at: selectedIndexPath.row, with: skipper)
-                } else {
-                    skippers[selectedIndexPath.row] = skipper
-                }
+                //skippers[selectedIndexPath.row] = skipper
+                skippers.update(at: selectedIndexPath.row, with: skipper)
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
             } else {
                 let newIndexPath = IndexPath(row: skippers.count, section: 0)
-                if delegate != nil {
-                    delegate!.appendSkipper(skipper)
-                } else {
-                    skippers.append(skipper)
-                }
+                skippers.append(skipper)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
