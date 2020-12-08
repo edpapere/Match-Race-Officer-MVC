@@ -1441,7 +1441,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mS5-cV-rPY" kind="show" id="TJU-yG-SPx"/>
+                                            <segue destination="mS5-cV-rPY" kind="show" identifier="EditEventInfo" id="TJU-yG-SPx"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1472,7 +1472,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="rxV-BR-rvj" kind="show" id="UYA-W1-UmC"/>
+                                            <segue destination="rxV-BR-rvj" kind="show" identifier="EditSkipperList" id="UYA-W1-UmC"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="gkm-JM-H5R" detailTextLabel="uDu-4h-44f" style="IBUITableViewCellStyleValue1" id="bT9-hv-GE0">
@@ -1613,6 +1613,11 @@
                     <navigationItem key="navigationItem" title="Event" id="6dl-7I-4SV">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="JP8-mb-QtV"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="boatsDetailLabel" destination="uDu-4h-44f" id="UmT-uO-lef"/>
+                        <outlet property="eventDetailLabel" destination="cbu-Wf-psC" id="t3a-Yp-O08"/>
+                        <outlet property="skippersDetailLabel" destination="q56-xi-glx" id="Dnr-2T-hOY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLP-mp-ZND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

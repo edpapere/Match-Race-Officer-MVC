@@ -7,28 +7,41 @@
 
 import UIKit
 
+protocol SkipperTableViewControllerDelegate {
+    func updateSkipper(at: Int, with: Skipper)
+    func appendSkipper(_: Skipper)
+    @discardableResult func removeSkipper(at: Int) -> Skipper
+    func insertSkipper(_: Skipper, at: Int)
+    func returnSkipper(at index: Int) -> Skipper
+    func replaceSkippers(_: [Skipper])
+    func countSkippers() -> Int
+}
+
 class SkipperTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var skippers: [Skipper] = [
-        Skipper( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
-        Skipper( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
-        Skipper( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
-        Skipper( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
-        Skipper( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
-        Skipper( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
-        Skipper( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
-        Skipper( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
-        Skipper( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
-        Skipper( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
-        Skipper( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
-        Skipper( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
-        Skipper( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
-        Skipper( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
-        Skipper( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
-        Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
-    ]
+    var delegate: SkipperTableViewControllerDelegate?
+    
+    var skippers: [Skipper] = []
+//        = [
+//        Skipper( ifPersonId: "sweak1".uppercased(), familyName: "Kjellberg", givenName: "Anna", gender: .female),
+//        Skipper( ifPersonId: "swemk".uppercased(), familyName: "Källström", givenName: "Malin", gender: .female),
+//        Skipper( ifPersonId: "swehs2".uppercased(), familyName: "Skarp", givenName: "Helena", gender: .female),
+//        Skipper( ifPersonId: "usaat1".uppercased(), familyName:"Tunnicliffe", givenName: "Anna", gender: .female),
+//        Skipper( ifPersonId: "usamo13".uppercased(), familyName:"O'Bryan", givenName: "Molly", gender: .female),
+//        Skipper( ifPersonId: "usadc11".uppercased(), familyName:"Capozzi", givenName: "Debbie", gender: .female),
+//        Skipper( ifPersonId: "fincw2".uppercased(), familyName:"Wahlroos", givenName: "Chita", gender: .female),
+//        Skipper( ifPersonId: "finmk5".uppercased(), familyName:"Klemetz", givenName: "Maria", gender: .female),
+//        Skipper( ifPersonId: "finlv1".uppercased(), familyName:"Väresmaa", givenName: "Livia", gender: .female),
+//        Skipper( ifPersonId: "fracl3".uppercased(), familyName:"Leroy", givenName: "Claire", gender: .female),
+//        Skipper( ifPersonId: "fraeb11".uppercased(), familyName:"Bertrand", givenName: "Elodie", gender: .female),
+//        Skipper( ifPersonId: "framr3".uppercased(), familyName:"Riou", givenName: "Marie", gender: .female),
+//        Skipper( ifPersonId: "ruses1".uppercased(), familyName: "Skudina", givenName: "Ekaterina", gender: .female),
+//        Skipper( ifPersonId: "ruses5".uppercased(), familyName: "Syuzeva", givenName: "Elena", gender: .female),
+//        Skipper( ifPersonId: "rusng1".uppercased(), familyName: "Gaponovich", givenName: "Natalia", gender: .female ),
+//        Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
+//    ]
   
     // MARK: - Methods
     
@@ -45,7 +58,6 @@ class SkipperTableViewController: UITableViewController {
     
 
 
-    
 
     
     // MARK: - Table view data source
@@ -65,6 +77,9 @@ class SkipperTableViewController: UITableViewController {
             #if DEBUG
             print(#line,#function,"Number of persons: \(skippers.count)")
             #endif
+            if let count = delegate?.countSkippers() {
+                return count
+            }
             return skippers.count
         }
         return 0
@@ -74,7 +89,13 @@ class SkipperTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
 
-        let skipper = skippers[indexPath.row]
+        // let skipper = skippers[indexPath.row]
+        var skipper: Skipper
+        if delegate != nil {
+            skipper = delegate!.returnSkipper(at: indexPath.row)
+        } else {
+            skipper = skippers[indexPath.row]
+        }
         
         let personName = NSMutableAttributedString(string: "\(skipper.gender == .female ? "👩🏼" : "👦🏻") \(skipper.givenName)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.labelFontSize)])
         personName.append(NSAttributedString(string: " \(skipper.familyName)",attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)]))
@@ -90,10 +111,10 @@ class SkipperTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let person = skippers[indexPath.row]
-        #if DEBUG
-        print(#line,#function,"\(person.familyName) \(person.givenName) \(indexPath)")
-        #endif
+//        let person = skippers[indexPath.row]
+//        #if DEBUG
+//        print(#line,#function,"\(person.familyName) \(person.givenName) \(indexPath)")
+//        #endif
     }
     /*
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -105,8 +126,12 @@ class SkipperTableViewController: UITableViewController {
     */
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedPerson = skippers.remove(at: sourceIndexPath.row)
-        skippers.insert(movedPerson, at: destinationIndexPath.row)
+        if let skipper = delegate?.removeSkipper(at: sourceIndexPath.row) {
+            delegate?.insertSkipper(skipper, at: destinationIndexPath.row)
+        } else {
+            let movedPerson = skippers.remove(at: sourceIndexPath.row)
+            skippers.insert(movedPerson, at: destinationIndexPath.row)
+        }
         tableView.reloadData()
     }
 
@@ -129,7 +154,12 @@ class SkipperTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            skippers.remove(at: indexPath.row)
+            print(#function, "remove \(indexPath.row)")
+            if  delegate != nil {
+                delegate!.removeSkipper(at:indexPath.row)
+            } else {
+                skippers.remove(at: indexPath.row)
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -161,7 +191,13 @@ class SkipperTableViewController: UITableViewController {
         #endif
         if segue.identifier == "EditSkipper" {
             let indexPath = tableView.indexPathForSelectedRow!
-            let skipper = skippers[indexPath.row]
+            //let skipper = skippers[indexPath.row]
+            var skipper: Skipper
+            if delegate != nil {
+                skipper = delegate!.returnSkipper(at: indexPath.row)
+            } else {
+                skipper = skippers[indexPath.row]
+            }
             let navController = segue.destination as! UINavigationController
             let addEditSkipperTableViewController = navController.topViewController as! AddEditSkipperTableViewController
             addEditSkipperTableViewController.skipper = skipper
@@ -172,9 +208,9 @@ class SkipperTableViewController: UITableViewController {
     // MARK: - IB Actions
     
     @IBAction func shuffleButtonTapped(_ sender: UIBarButtonItem) {
-//        tableView.setEditing(!tableView.isEditing, animated: true)
-        skippers.shuffle()
-        tableView.reloadData()
+//        skippers.shuffle()
+//        delegate?.replaceSkippers(skippers)
+//        tableView.reloadData()
     }
     
     @IBAction func unwindToPersonTableView(_ unwindSegue: UIStoryboardSegue) {
@@ -194,12 +230,20 @@ class SkipperTableViewController: UITableViewController {
         
         if let skipper = sourceViewController.skipper {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                skippers[selectedIndexPath.row] = skipper
+                if delegate != nil {
+                    delegate!.updateSkipper(at: selectedIndexPath.row, with: skipper)
+                } else {
+                    skippers[selectedIndexPath.row] = skipper
+                }
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
             } else {
                 let newIndexPath = IndexPath(row: skippers.count, section: 0)
-                skippers.append(skipper)
+                if delegate != nil {
+                    delegate!.appendSkipper(skipper)
+                } else {
+                    skippers.append(skipper)
+                }
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }

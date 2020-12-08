@@ -74,7 +74,8 @@ class AddEditSkipperTableViewController: UITableViewController {
         let changedInEditMode =
             self.skipper != nil ? ifSailorID != skipper!.ifPersonId || familyName != skipper!.familyName || givenName != skipper!.givenName || gender != ( skipper!.gender == .male ? 0 : 1 ) || skipper!.ifRank != rank : true
         
-        saveButton.isEnabled = changedInEditMode && !ifSailorID.isEmpty && !familyName.isEmpty && !givenName.isEmpty && gender != -1
+        saveButton.isEnabled = changedInEditMode && //!ifSailorID.isEmpty &&
+            !familyName.isEmpty && !givenName.isEmpty && gender != -1
         
     }
 

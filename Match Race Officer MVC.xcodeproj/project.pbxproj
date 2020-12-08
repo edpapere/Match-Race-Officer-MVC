@@ -131,8 +131,8 @@
 			children = (
 				55956930257EB6BA003A0A12 /* AddEventTableViewController.swift */,
 				55956922257B009E003A0A12 /* EditEventInfoTableViewController.swift */,
-				55956938257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift */,
 				554EEDA4257ED97800F36AED /* SkipperTableViewController.swift */,
+				55956938257EBCB0003A0A12 /* AddEditSkipperTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
