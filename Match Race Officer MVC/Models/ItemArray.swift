@@ -5,14 +5,14 @@
 //  Created by Andrey Pereslavtsev on 08.12.2020.
 //
 
-protocol ItemCollectionDelegate {
+protocol ItemArrayDelegate {
     func collectionChanged(_ identifier: String)
 }
 
-class ItemCollection<T> {
+class ItemArray<T> {
     
     fileprivate var items: [T] = []
-    var delegate: ItemCollectionDelegate?
+    var delegate: ItemArrayDelegate?
     var identifier: String = ""
     var array: [T] { items }
     var count: Int { items.count }

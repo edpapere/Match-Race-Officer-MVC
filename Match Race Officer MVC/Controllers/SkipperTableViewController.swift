@@ -24,7 +24,7 @@ class SkipperTableViewController: UITableViewController {
     //var delegate: SkipperTableViewControllerDelegate?
     
     //var skippers: [Skipper] = []
-    var skippers = ItemCollection<Skipper>()
+    var skippers = ItemArray<Skipper>()
   
     // MARK: - Methods
     

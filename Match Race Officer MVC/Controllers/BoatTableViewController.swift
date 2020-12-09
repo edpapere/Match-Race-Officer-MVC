@@ -9,7 +9,7 @@ import UIKit
 
 class BoatTableViewController: UITableViewController {
     
-    var boats = ItemCollection<Boat>()
+    var boats = ItemArray<Boat>()
     
     override func viewDidLoad() {
         super.viewDidLoad()

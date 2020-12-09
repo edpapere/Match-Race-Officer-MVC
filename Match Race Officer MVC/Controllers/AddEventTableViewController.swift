@@ -7,10 +7,8 @@
 
 import UIKit
 
-class AddEventTableViewController: UITableViewController, ItemCollectionDelegate, SailingEventInfoDelegate {
+class AddEventTableViewController: UITableViewController, ItemArrayDelegate, ItemDictionaryDelegate, SailingEventInfoDelegate {
 
-
-    
   
 
     
@@ -46,8 +44,9 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
 //    ]
     
     var eventInfo = SailingEventInfo()
-    var skippers = ItemCollection<Skipper>()
-    var boats = ItemCollection<Boat>()
+    var skippers = ItemArray<Skipper>()
+    var boats = ItemArray<Boat>()
+    var stageFormats = ItemDictionary<StageFormat>()
     
     let eventInfoCellPath = IndexPath(row: 0, section: 0)
     
@@ -105,6 +104,105 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
         boats.identifier = "BoatCollection"
         boats.delegate = self
         
+        
+        
+        
+        //    func assign(_ items: [StageFormat]) {
+        //        let saveDelegate = self.delegate
+        //        delegate = nil
+        //        super.removeAll()
+        //        for format in items {
+        //            self.append(format)
+        //            // append(key: format.uniqueCode, value: format)
+        //        }
+        //        self.delegate = saveDelegate
+        //        delegate?.collectionChanged(identifier)
+        //    }
+ 
+        // stageFormats.removeAll()
+        stageFormats.assign(
+            [
+                "FINALS":
+                    StageFormat(
+                        title: "4S-4B *Finals* (2 & 3 points)",
+                        description: "Petit Final 2pts., Grand Final 3pts.",
+                        numSkippers: 4,
+                        numBoats: 4,
+                        flights: []
+                    ),
+                "SEMI FINALS":
+                    StageFormat(
+                        title: "4S-4B *Semi Finals* (3 points)",
+                        description: "",
+                        numSkippers: 4,
+                        numBoats: 4,
+                        flights: []
+                    ),
+                "SAIL OFFS":
+                    StageFormat(
+                        title: "4S-4B *Sail Offs* (1 point)",
+                        description: "",
+                        numSkippers: 4,
+                        numBoats: 4,
+                        flights: []
+                    ),
+                "":
+                    StageFormat(
+                        title: "*6S-6B-1RR* One Round Robin",
+                        description: "Single or 1st RR",
+                        numSkippers: 6,
+                        numBoats: 6,
+                        flights: []
+                    ),
+                "":
+                    StageFormat(
+                        title: "*6S-6B-1RR* 2nd Round Robin",
+                        description: "2nd RR: swapped sides",
+                        numSkippers: 6,
+                        numBoats: 6,
+                        flights: []
+                    ),
+                "8S-8B-1RR":
+                    StageFormat(title: "*8S-8B-1RR* One Round Robin"),
+                "8S-8B-1RR.2":
+                    StageFormat(title: "*8S-8B-1RR* 2nd Round Robin"),
+                "9S-4B-1RR":
+                    StageFormat(title: "*9S-4B-1RR* One Round Robin"),
+                "9S-4B-1RR.2":
+                    StageFormat(title: "*9S-4B-1RR* 2nd Round Robin"),
+                "9S-6B-1RR":
+                    StageFormat(title: "*9S-6B-1RR* One Round Robin"),
+                "9S-6B-1RR.2":
+                    StageFormat(title: "*9S-6B-1RR* 2nd Round Robin")
+            ]
+        )
+  /*      ,
+        
+
+        StageFormat(title: "*01*"),
+        StageFormat(title: "*02*"),
+        StageFormat(title: "*03*"),
+        StageFormat(title: "*04*"),
+        StageFormat(title: "*05*"),
+        StageFormat(title: "*06*"),
+        StageFormat(title: "*07*"),
+        StageFormat(title: "*08*"),
+        StageFormat(title: "*09*"),
+        StageFormat(title: "*10*"),
+        StageFormat(title: "*11*"),
+        StageFormat(title: "*12*"),
+        StageFormat(title: "*13*"),
+        StageFormat(title: "*14*"),
+        StageFormat(title: "*15*"),
+        StageFormat(title: "*16*"),
+        StageFormat(title: "*17*"),
+        StageFormat(title: "*18*"),
+        StageFormat(title: "*19*")])
+        
+        */
+        
+        stageFormats.identifier = "StageFormatCollection"
+        stageFormats.delegate = self
         
         updateLabels()
       
@@ -228,6 +326,9 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
         //tableView.reloadRows(at: [eventInfoCellPath], with: .none)
     }
     
+    func dictionaryChanged(_ identifier: String) {
+        self.updateLabels()
+    }
     
     
   
