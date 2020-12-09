@@ -9,25 +9,30 @@ import UIKit
 
 class EditEventInfoTableViewController: UITableViewController {
 
+    
+    // MARK: - IB Outlets
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var subtitleTextField: UITextField!
     @IBOutlet weak var beginDateLabel: UILabel!
     @IBOutlet weak var beginDatePicker: UIDatePicker!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     
     
+    // MARK: - Properties
+    
+    var eventInfo = SailingEventInfo()
+    
     let beginDatePicketPath = IndexPath(row:1, section: 1)
     let endDatePicketPath = IndexPath(row:3, section: 1)
     
     var isBeginDatePickerShown = false {
-        didSet {
-            beginDatePicker.isHidden = !isBeginDatePickerShown
-        }
+        didSet { beginDatePicker.isHidden = !isBeginDatePickerShown }
     }
     
     var isEndDatePickerShown = false {
-        didSet {
-            endDatePicker.isHidden = !isEndDatePickerShown
-        }
+        didSet { endDatePicker.isHidden = !isEndDatePickerShown }
     }
 
     
@@ -40,6 +45,17 @@ class EditEventInfoTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        updateUI()
+        
+    }
+    
+    func updateUI() {
+        
+        self.titleTextField.text = eventInfo.title
+        self.subtitleTextField.text = eventInfo.subtitle
+        self.beginDatePicker.date = eventInfo.beginDate
+        self.endDatePicker.date = eventInfo.endDate
+        
         updateDateViews()
         
     }
@@ -47,8 +63,10 @@ class EditEventInfoTableViewController: UITableViewController {
     func updateDateViews() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        beginDateLabel.text = dateFormatter.string(from: beginDatePicker.date)
-        endDateLabel.text = dateFormatter.string(from: endDatePicker.date)
+//        beginDateLabel.text = dateFormatter.string(from: beginDatePicker.date)
+//        endDateLabel.text = dateFormatter.string(from: endDatePicker.date)
+        beginDateLabel.text = dateFormatter.string(from: self.eventInfo.beginDate)
+        endDateLabel.text = dateFormatter.string(from: self.eventInfo.endDate)
     }
 
     // MARK: - Table view data source
@@ -166,6 +184,9 @@ class EditEventInfoTableViewController: UITableViewController {
     }
     */
     
+    
+    // MARK: - IB Actions
+    
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         #if DEBUG
         print(beginDateLabel.text!)
@@ -174,6 +195,22 @@ class EditEventInfoTableViewController: UITableViewController {
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
+        eventInfo.beginDate = beginDatePicker.date
+        eventInfo.endDate = endDatePicker.date
         updateDateViews()
     }
+    
+    @IBAction func textEditChanged(_ sender: UITextField) {
+        switch sender.tag {
+        case 11:
+            eventInfo.title = titleTextField.text ?? ""
+            break
+        case 12:
+            eventInfo.subtitle = subtitleTextField.text ?? ""
+            break
+        default:
+            break
+        }
+    }
+    
 }

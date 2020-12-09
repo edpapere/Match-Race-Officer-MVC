@@ -7,7 +7,8 @@
 
 import UIKit
 
-class AddEventTableViewController: UITableViewController, ItemCollectionDelegate {
+class AddEventTableViewController: UITableViewController, ItemCollectionDelegate, SailingEventInfoDelegate {
+
 
     
   
@@ -15,6 +16,7 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
     
     // MARK: - IB Outlets
 
+    @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventDetailLabel: UILabel!
     @IBOutlet weak var skippersDetailLabel: UILabel!
     @IBOutlet weak var boatsDetailLabel: UILabel!
@@ -43,8 +45,11 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
 //        Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
 //    ]
     
+    var eventInfo = SailingEventInfo()
     var skippers = ItemCollection<Skipper>()
     var boats = ItemCollection<Boat>()
+    
+    let eventInfoCellPath = IndexPath(row: 0, section: 0)
     
   
   
@@ -59,6 +64,12 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        eventInfo.title = "Sailing Academy Summer Cup"
+        eventInfo.subtitle = "Moscow region"
+        eventInfo.beginDate = Date()
+        eventInfo.endDate = Date()
+        eventInfo.delegate = self
         
         skippers.assign(
             [
@@ -80,8 +91,8 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
                 Skipper( ifPersonId: "usagt8".uppercased(), familyName: "Tulloch", givenName: "Genny", gender: .female)
             ]
         )
-        skippers.delegate = self
         skippers.identifier = "SkipperCollection"
+        skippers.delegate = self
         
         boats.assign(
             [
@@ -91,8 +102,8 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
                 Boat(shortName: "F", boatName: "Foxtrot")
             ]
         )
-        boats.delegate = self
         boats.identifier = "BoatCollection"
+        boats.delegate = self
         
         
         updateLabels()
@@ -102,8 +113,15 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
     }
     
     func updateLabels() {
+        self.updateEventInfoUI()
+        
         skippersDetailLabel.text = skippers.count > 0 ? "\(skippers.count)" : "no skippers"
         boatsDetailLabel.text = boats.count > 0 ? "\(boats.count)" : "no boats"
+    }
+    
+    func updateEventInfoUI() {
+        eventTitleLabel.text = eventInfo.title
+        eventDetailLabel.text = eventInfo.subtitle + ", " + eventInfo.eventDatesDDMMYY()
     }
 
     // MARK: - Table view data source
@@ -189,18 +207,27 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
     }
     */
 
-    // MARK: - Collection Delegates
+    // MARK: - Data Model Delegates
     
-    func boatCollectionChanged() {
-        updateLabels()
-    }
-    
+//    func boatCollectionChanged() {
+//        updateLabels()
+//    }
+//
     func collectionChanged(_ identifier: String) {
         #if DEBUG
         print(#function,"Colletion changed. Identifier = \(identifier)")
         #endif
         updateLabels()
     }
+    
+    func sailingEventInfoChanged() {
+        #if DEBUG
+        print(#function,"Event info changed.")
+        #endif
+        self.updateEventInfoUI()
+        //tableView.reloadRows(at: [eventInfoCellPath], with: .none)
+    }
+    
     
     
   
@@ -215,6 +242,8 @@ class AddEventTableViewController: UITableViewController, ItemCollectionDelegate
         
         switch segue.identifier {
         case "EditEventInfo":
+            let tvc = segue.destination as? EditEventInfoTableViewController
+            tvc?.eventInfo = self.eventInfo
             break
         case "EditSkipperList":
             let skipperTableViewController = segue.destination as? SkipperTableViewController
