@@ -1945,7 +1945,7 @@
         <!--Format-->
         <scene sceneID="YYL-dS-yUV">
             <objects>
-                <viewController id="etx-Iz-g4f" customClass="StageFormatSelectionViewController" customModule="Match_Race_Officer_MVC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="etx-Iz-g4f" customClass="XStageFormatSelectionViewControllerX" customModule="Match_Race_Officer_MVC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OhS-jQ-WFW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2084,8 +2084,15 @@
                             <constraint firstItem="uO6-cJ-FpB" firstAttribute="top" secondItem="L5s-22-qKk" secondAttribute="top" id="a0O-tD-Bez"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Format" id="zNd-Am-EpE"/>
+                    <navigationItem key="navigationItem" title="Format" id="zNd-Am-EpE">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="checkmark.square" catalog="system" id="pjK-90-ndW">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="etx-Iz-g4f" id="I1y-GQ-E53"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="filterBarButton" destination="pjK-90-ndW" id="5Lr-0S-KUd"/>
                         <outlet property="numBoatsIndicatorTextField" destination="Zb1-4q-upD" id="cOQ-df-0aW"/>
                         <outlet property="numBoatsStepper" destination="wWd-2X-4Z1" id="C3m-2P-dQe"/>
                         <outlet property="numSkippersIndicatorTextField" destination="dTD-0o-OcD" id="10a-fI-cUh"/>
@@ -2105,6 +2112,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="table" catalog="system" width="128" height="93"/>

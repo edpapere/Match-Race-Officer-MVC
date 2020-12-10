@@ -46,7 +46,7 @@ class AddEventTableViewController: UITableViewController, ItemArrayDelegate, Ite
     var eventInfo = SailingEventInfo()
     var skippers = ItemArray<Skipper>()
     var boats = ItemArray<Boat>()
-    var stageFormats = ItemDictionary<StageFormat>()
+    var stageFormats = ItemDictionary<String,StageFormat>()
     
     let eventInfoCellPath = IndexPath(row: 0, section: 0)
     
@@ -119,61 +119,67 @@ class AddEventTableViewController: UITableViewController, ItemArrayDelegate, Ite
         //        delegate?.collectionChanged(identifier)
         //    }
  
-        // stageFormats.removeAll()
+        stageFormats.removeAll()
+        
         stageFormats.assign(
             [
-                "FINALS":
+                ("FINALS",
                     StageFormat(
                         title: "4S-4B *Finals* (2 & 3 points)",
                         description: "Petit Final 2pts., Grand Final 3pts.",
                         numSkippers: 4,
                         numBoats: 4,
                         flights: []
-                    ),
-                "SEMI FINALS":
+                    )
+                ),
+                ("SEMI FINALS",
                     StageFormat(
                         title: "4S-4B *Semi Finals* (3 points)",
                         description: "",
                         numSkippers: 4,
                         numBoats: 4,
                         flights: []
+                    )
                     ),
-                "SAIL OFFS":
+                ("SAIL OFFS",
                     StageFormat(
                         title: "4S-4B *Sail Offs* (1 point)",
                         description: "",
                         numSkippers: 4,
                         numBoats: 4,
                         flights: []
+                    )
                     ),
-                "":
+                ("6S-6B-1RR",
                     StageFormat(
                         title: "*6S-6B-1RR* One Round Robin",
                         description: "Single or 1st RR",
                         numSkippers: 6,
                         numBoats: 6,
                         flights: []
-                    ),
-                "":
+                    )
+                ),
+                ("6S-6B-1RR.2",
                     StageFormat(
                         title: "*6S-6B-1RR* 2nd Round Robin",
                         description: "2nd RR: swapped sides",
                         numSkippers: 6,
                         numBoats: 6,
                         flights: []
+                    )
                     ),
-                "8S-8B-1RR":
-                    StageFormat(title: "*8S-8B-1RR* One Round Robin"),
-                "8S-8B-1RR.2":
-                    StageFormat(title: "*8S-8B-1RR* 2nd Round Robin"),
-                "9S-4B-1RR":
-                    StageFormat(title: "*9S-4B-1RR* One Round Robin"),
-                "9S-4B-1RR.2":
-                    StageFormat(title: "*9S-4B-1RR* 2nd Round Robin"),
-                "9S-6B-1RR":
-                    StageFormat(title: "*9S-6B-1RR* One Round Robin"),
-                "9S-6B-1RR.2":
-                    StageFormat(title: "*9S-6B-1RR* 2nd Round Robin")
+                ("8S-8B-1RR",
+                    StageFormat(title: "*8S-8B-1RR* One Round Robin")),
+                ("8S-8B-1RR.2",
+                    StageFormat(title: "*8S-8B-1RR* 2nd Round Robin")),
+                ("9S-4B-1RR",
+                    StageFormat(title: "*9S-4B-1RR* One Round Robin")),
+                ("9S-4B-1RR.2",
+                    StageFormat(title: "*9S-4B-1RR* 2nd Round Robin")),
+                ("9S-6B-1RR",
+                    StageFormat(title: "*9S-6B-1RR* One Round Robin")),
+                ("9S-6B-1RR.2",
+                    StageFormat(title: "*9S-6B-1RR* 2nd Round Robin"))
             ]
         )
   /*      ,
@@ -353,6 +359,11 @@ class AddEventTableViewController: UITableViewController, ItemArrayDelegate, Ite
         case "EditBoatList":
             let boatTableViewController = segue.destination as? BoatTableViewController
             boatTableViewController?.boats = self.boats
+            // skipperTableViewController?.delegate = self
+            break
+        case "SelectStageFormat":
+            let ctrl = segue.destination as? XStageFormatSelectionViewControllerX
+            ctrl?.stageFormats = self.stageFormats
             // skipperTableViewController?.delegate = self
             break
         default:
