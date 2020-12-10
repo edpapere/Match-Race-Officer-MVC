@@ -19,13 +19,17 @@ import UIKit
 
 class SkipperTableViewController: UITableViewController {
     
+    // MARK: - IB Outlets
+    
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
+    
+    
     // MARK: - Properties
     
-    //var delegate: SkipperTableViewControllerDelegate?
-    
-    //var skippers: [Skipper] = []
     var skippers = ItemArray<Skipper>()
-  
+    var tap = UITapGestureRecognizer()
+
+    
     // MARK: - Methods
     
     override func viewDidLoad() {
@@ -37,11 +41,35 @@ class SkipperTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(SkipperTableViewController.handleLongPress))
+        longPress.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(longPress)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(SkipperTableViewController.handleTap))
+        tap.cancelsTouchesInView = true
+        self.tap.isEnabled = false
+        view.addGestureRecognizer(tap)
     }
     
 
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.began {
+            if !self.isEditing { self.isEditing = true }
+        }
+    }
 
-
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        if self.tableView.isEditing { self.isEditing = false }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        print("Editting = \(self.isEditing)")
+        addBarButton.isEnabled = !self.isEditing
+        tap.isEnabled = self.isEditing // this will enable tap recognizer only for editing mode
+    }
+    
     
     // MARK: - Table view data source
 
@@ -102,11 +130,13 @@ class SkipperTableViewController: UITableViewController {
     
 
 
-    /*
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false // to disable left indent while Editing
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return tableView.isEditing ? .none : .delete // to remove delete icon while Editing but allowing to delete by swipe (.delete also forces indent)
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -164,13 +194,7 @@ class SkipperTableViewController: UITableViewController {
     
     
     // MARK: - IB Actions
-    
-    @IBAction func shuffleButtonTapped(_ sender: UIBarButtonItem) {
-//        skippers.shuffle()
-//        delegate?.replaceSkippers(skippers)
-//        tableView.reloadData()
-    }
-    
+
     @IBAction func unwindToPersonTableView(_ unwindSegue: UIStoryboardSegue) {
         
         #if DEBUG
@@ -200,6 +224,5 @@ class SkipperTableViewController: UITableViewController {
         }
         
     }
-  
     
 }
