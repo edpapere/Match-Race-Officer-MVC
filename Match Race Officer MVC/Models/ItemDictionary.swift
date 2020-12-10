@@ -5,6 +5,16 @@
 //  Created by Andrey Pereslavtsev on 09.12.2020.
 //
 
+// OrderedDictionary structure by Lukas Kubanek:
+//   + similar idea
+//   + better implementation
+//   - structure not a class
+//   - w/o delegate
+// https://github.com/lukaskubanek/OrderedDictionary
+//
+// Nice article describing concept of OrderedDictionary:
+// https://www.timekl.com/blog/2014/06/02/learning-swift-ordered-dictionaries/
+
 
 protocol ItemDictionaryDelegate {
     func dictionaryChanged(_ identifier: String)
