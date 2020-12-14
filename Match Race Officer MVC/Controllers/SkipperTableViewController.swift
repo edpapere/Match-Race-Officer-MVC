@@ -27,7 +27,7 @@ class SkipperTableViewController: UITableViewController {
     // MARK: - Properties
     
     var skippers = ItemArray<Skipper>()
-    var tap = UITapGestureRecognizer()
+    var tapGestureRecognizer = UITapGestureRecognizer()
 
     
     // MARK: - Methods
@@ -46,10 +46,11 @@ class SkipperTableViewController: UITableViewController {
         longPress.cancelsTouchesInView = false
         tableView.addGestureRecognizer(longPress)
         
-        tap = UITapGestureRecognizer(target: self, action: #selector(SkipperTableViewController.handleTap))
-        tap.cancelsTouchesInView = true
-        self.tap.isEnabled = false
-        view.addGestureRecognizer(tap)
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SkipperTableViewController.handleTap))
+        tapGestureRecognizer.cancelsTouchesInView = true
+        self.tapGestureRecognizer.isEnabled = false
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
 
@@ -67,7 +68,7 @@ class SkipperTableViewController: UITableViewController {
         super.setEditing(editing, animated: animated)
         print("Editting = \(self.isEditing)")
         addBarButton.isEnabled = !self.isEditing
-        tap.isEnabled = self.isEditing // this will enable tap recognizer only for editing mode
+        tapGestureRecognizer.isEnabled = self.isEditing // this will enable tap recognizer only for editing mode
     }
     
     

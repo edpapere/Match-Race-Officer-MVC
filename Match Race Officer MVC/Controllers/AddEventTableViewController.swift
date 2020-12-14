@@ -47,6 +47,7 @@ class AddEventTableViewController: UITableViewController, ItemArrayDelegate, Ite
     var skippers = ItemArray<Skipper>()
     var boats = ItemArray<Boat>()
     var stageFormats = ItemDictionary<String,StageFormat>()
+    var stageFormatKey: String?
     
     let eventInfoCellPath = IndexPath(row: 0, section: 0)
     

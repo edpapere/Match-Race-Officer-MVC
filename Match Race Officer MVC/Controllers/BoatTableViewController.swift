@@ -9,7 +9,19 @@ import UIKit
 
 class BoatTableViewController: UITableViewController {
     
+    
+    // MARK: - IB Outlets
+    
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
+    
+    
+    // MARK: - Properties
+    
     var boats = ItemArray<Boat>()
+    var tapGestureRecognizer = UITapGestureRecognizer()
+    
+    
+    // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +32,35 @@ class BoatTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.rightBarButtonItems?.insert(editButtonItem, at: 0)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(SkipperTableViewController.handleLongPress))
+        longPress.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(longPress)
+        
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SkipperTableViewController.handleTap))
+        tapGestureRecognizer.cancelsTouchesInView = true
+        self.tapGestureRecognizer.isEnabled = false
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
     }
 
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.began {
+            if !self.isEditing { self.isEditing = true }
+        }
+    }
+
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        if self.tableView.isEditing { self.isEditing = false }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        print("Editting = \(self.isEditing)")
+        addBarButton.isEnabled = !self.isEditing
+        tapGestureRecognizer.isEnabled = self.isEditing // this will enable tap recognizer only for editing mode
+    }
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditBoat" {
@@ -65,6 +104,14 @@ class BoatTableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false // to disable left indent while Editing
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return tableView.isEditing ? .none : .delete // to remove delete icon while Editing but allowing to delete by swipe (.delete also forces indent)
+    }
 
     /*
     // Override to support conditional editing of the table view.
